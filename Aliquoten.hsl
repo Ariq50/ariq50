@@ -1,0 +1,150 @@
+#include "Aliquoten.res"
+/* {{ 2 "LibraryInsertLine" "" */ // }} ""
+global device ML_STAR ("Aliquoten.lay", "ML_STAR", hslTrue);
+/* {{ 2 "VariableInsertLine" "" */ // }} ""
+// {{ 2 "TemplateIncludeBlock" ""
+ namespace _Method { #include "HSLMETEDLib.hs_" } 
+ namespace _Method { #include "HSLMECCLib.hs_" } 
+ namespace _Method { #include "HSLPTLLib.hsl" } 
+// }} ""
+// {{{ 2 "LocalSubmethodInclude" ""
+ namespace _Method {  #include __filename__ ".sub"  } 
+// }} ""
+/* {{ 2 "ProcessInsertLine" "" */ // }} ""
+// {{{ 5 "main" "Begin"
+namespace _Method { method main(  ) void {
+// }} ""
+// {{ 5 "main" "InitLocals"
+// }} ""
+// {{ 2 "AutoInitBlock" ""
+PTL::SetWashingStateDefault("RinseTime1", 5);
+PTL::SetWashingStateDefault("SoakTime1", 5);
+PTL::SetWashingStateDefault("FlowRate1", 11);
+PTL::SetWashingStateDefault("RinseTime2", 0);
+PTL::SetWashingStateDefault("SoakTime2", 0);
+PTL::SetWashingStateDefault("FlowRate2", 11);
+PTL::SetWashingStateDefault("DrainingTime", 10);
+PTL::SetWashingStateDefault("StartWashLiquid", 0);
+PTL::SetLoadingStateDefault("RecoveryOptionContinue", hslTrue);
+PTL::SetLoadingStateDefault("RecoveryOptionExclude", hslTrue);
+PTL::SetLoadingStateDefault("RecoveryOptionDefault", 0);
+PTL::SetLoadingStateDefault("KitLotCheckEnabled", hslFalse);
+::RegisterAbortHandler( "OnAbort");
+// }} ""
+// {{ 1 1 0 "b1639615_0157_439a_8aab0ad75b29dbea" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 2 1 0 "1412328f_cfcb_422e_94d98adb7024da62" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 3 1 0 "cf700834_3984_417b_a8f8a4f81333eb27" "ML_STAR:{1C0C0CB0-7C87-11D3-AD83-0004ACB1DCB2}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._1C0C0CB0_7C87_11D3_AD83_0004ACB1DCB2("cf700834_3984_417b_a8f8a4f81333eb27"); // Initialize
+}
+// }} ""
+// {{ 4 1 0 "855b3177_40b5_4a24_949e542a2f1c617f" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 5 1 0 "9d6c2601_99be_4cad_99d3d4fe31424f4e" "{E6776CB1-4681-40c6-B8A1-A538D6138CBA}"
+PTL::ResetLoadingStateAndSequences();
+PTL::SetLoadingState("UserResponseTime", hslInfinite);
+PTL::SetLoadingState("ErrorHandling", 3);
+PTL::SetLoadingState("CalibrateCarrierChannel", -1);
+PTL::SetLoadingSize(3);
+PTL::SetLoadingSequence(0, ML_STAR.Tips, 1, -10, hslTrue, hslFalse, "");
+PTL::SetLoadingSequence(1, ML_STAR.Samples, 1, -10, hslTrue, hslFalse, "");
+PTL::SetLoadingSequence(2, ML_STAR.Plate, 1, -10, hslTrue, hslFalse, "");
+if( 0 == PTL::Load(ML_STAR, hslTrue) )
+{
+    PTL::RaiseRuntimeError(-1556872960, PTL::IDS::smartStepLoad, PTL::IDS::smartStepFailed, "HxGRUCompCmd");
+}
+PTL::GetLoadingSequence(0, ML_STAR.Tips);
+PTL::GetLoadingSequence(1, ML_STAR.Samples);
+PTL::GetLoadingSequence(2, ML_STAR.Plate);
+// }} ""
+// {{ 6 1 0 "29f14432_f359_4b79_bd8ea0b0b90fafc7" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 7 1 0 "96e714ab_9da5_41d2_8fcc2bebf39cdaec" "{AB5187D8-1728-4c30-A7D6-E0B0D082DB80}"
+PTL::ResetPipettingStateAndSequences("");
+PTL::SetPipettingState("UserResponseTime", hslInfinite);
+PTL::SetPipettingState("ErrorHandling", 3);
+PTL::SetPipettingState("TipCountingEnabled", hslFalse);
+PTL::SetPipettingState("TipCountingIdentifier", "");
+PTL::SetPipettingState("CopyPatternEnabled", hslFalse);
+PTL::SetPipettingState("ExcludeErrorPositionsEnabled", hslFalse);
+PTL::SetPipettingState("CalibrateCarrierChannel", -1);
+PTL::SetPipettingState("InitializeChannelVariable", "");
+PTL::SetPipettingState("InitializeEnabled", hslTrue);
+PTL::SetPipettingState("TipPickupChannelVariable", "");
+PTL::SetPipettingState("TipPickupEnabled", hslTrue);
+PTL::SetPipettingState("TipPickupSequenceReloadable", hslTrue);
+PTL::SetPipettingState("TipPickupSequenceReducible", hslTrue);
+PTL::SetPipettingState("TipEjectChannelVariable", "");
+PTL::SetPipettingState("AspirateMode", 0);
+PTL::SetPipettingState("AspirateCLLDSensitivity", 4);
+PTL::SetPipettingState("AspirateFluidHeight", 0);
+PTL::SetPipettingState("AspirateSubmergeDepth", 2);
+PTL::SetPipettingState("AspirateChannelVariable", "");
+PTL::SetPipettingState("AspirateMaxHeightDiff", 0);
+PTL::SetPipettingState("AspiratePLLDSensitivity", 0);
+PTL::SetPipettingState("AspirateLiquidFollowing", hslTrue);
+PTL::SetPipettingState("AspirateUserDefinedLiquidClass", "StandardVolume_Water_AliquotDispenseJet_Part");
+PTL::SetPipettingState("AspirateSequenceReloadable", hslTrue);
+PTL::SetPipettingState("AspirateSequenceReducible", hslTrue);
+PTL::SetPipettingState("AspirateSequenceCurrentInitialization", -10);
+PTL::SetPipettingState("AspirateSequenceCurrentFinalization", -7);
+PTL::SetPipettingState("AspirateSequenceCountInitialization", -10);
+PTL::SetPipettingState("AspirateSequenceCountFinalization", -8);
+PTL::SetPipettingState("AspirateSequenceCalibration", hslTrue);
+PTL::SetPipettingState("DispenseSubmergeDepth", 0);
+PTL::SetPipettingState("DispenseChannelVariable", "");
+PTL::SetPipettingState("DispenseCLLDSensitivity", 0);
+PTL::SetPipettingState("DispenseFluidHeight", 2);
+PTL::SetPipettingState("DispenseMode", 1);
+PTL::SetPipettingState("DispenseLiquidFollowing", hslTrue);
+PTL::SetPipettingState("DispenseUserDefinedLiquidClass", "StandardVolume_Water_AliquotDispenseJet_Part");
+PTL::SetPipettingState("DispenseSequenceReloadable", hslFalse);
+PTL::SetPipettingState("DispenseSequenceReducible", hslFalse);
+PTL::SetPipettingState("DispenseSequenceCurrentInitialization", -10);
+PTL::SetPipettingState("DispenseSequenceCurrentFinalization", -7);
+PTL::SetPipettingState("DispenseSequenceCountInitialization", -10);
+PTL::SetPipettingState("DispenseSequenceCountFinalization", -8);
+PTL::SetPipettingState("DispenseSequenceCalibration", hslTrue);
+PTL::SetPipettingState("DispenseRestVolumeDestination", 1);
+PTL::SetPipettingState("DispenseRestVolumeToAspirateSequenceSurface", hslFalse);
+PTL::SetPipettingState("DispenseRestVolumeFluidHeight", 90);
+PTL::SetPipettingState("AliquotEnabled", hslTrue);
+PTL::SetPipettingState("AliquotPreAspirateVolume", 20);
+PTL::SetPipettingState("AliquotAspirateDefaultMixingEnabled", hslTrue);
+if( 0 == PTL::Pipette(ML_STAR, ML_STAR.Tips, ML_STAR.Samples, ML_STAR.Plate, 1, 1, 20, 20, 2, 1, hslInfinite, hslInfinite, "") )
+{
+    PTL::RaiseRuntimeError(-1573650176, PTL::IDS::smartStepPipette, PTL::IDS::smartStepFailed, "HxGRUCompCmd");
+}
+// }} ""
+// {{ 8 1 0 "14710540_1703_46fe_9a8069e09fa09041" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 9 1 0 "66b31e92_37a6_4cdf_b0fb987fece50b36" "{CB6F8FE9-BCEF-434c-863A-A7DE77ACFB6E}"
+PTL::ResetUnloadingStateAndSequences();
+PTL::SetUnloadingState("UserResponseTime", hslInfinite);
+PTL::SetUnloadingState("ErrorHandling", 3);
+PTL::SetUnloadingSize(3);
+PTL::SetUnloadingSequence(0, ML_STAR.Plate, hslFalse, "");
+PTL::SetUnloadingSequence(1, ML_STAR.Samples, hslFalse, "");
+PTL::SetUnloadingSequence(2, ML_STAR.Tips, hslFalse, "");
+if( 0 == PTL::Unload(ML_STAR) )
+{
+    PTL::RaiseRuntimeError(-1540095744, PTL::IDS::smartStepUnload, PTL::IDS::smartStepFailed, "HxGRUCompCmd");
+}
+PTL::GetUnloadingSequence(0, ML_STAR.Plate);
+PTL::GetUnloadingSequence(1, ML_STAR.Samples);
+PTL::GetUnloadingSequence(2, ML_STAR.Tips);
+// }} ""
+// {{ 2 "AutoExitBlock" ""
+// }} ""
+// {{{ 5 "main" "End"
+} }
+// }} ""
+// $$author=Sophytes$$valid=0$$time=2020-12-24 15:35$$checksum=e781f020$$length=087$$
