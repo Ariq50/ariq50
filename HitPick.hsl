@@ -1,0 +1,259 @@
+#include "HitPick.res"
+ namespace _Method { #include "HSLSeqLib.hsl" } 
+ namespace _Method { #include "HSLTrcLib.hsl" } 
+/* {{ 2 "LibraryInsertLine" "" */ // }} ""
+global device ML_STAR ("HitPick.lay", "ML_STAR", hslTrue);
+dialog dialogHandle1;
+variable threshold;
+variable labid;
+variable sqlSelect;
+variable sqlselect;
+variable od;
+variable posid;
+variable loopCounter1;
+file file1;
+sequence seq_CherryPick_Destination_All;
+sequence seq_HitPick_Destination_All;
+/* {{ 2 "VariableInsertLine" "" */ // }} ""
+// {{ 2 "TemplateIncludeBlock" ""
+ namespace _Method { #include "HSLMETEDLib.hs_" } 
+ namespace _Method { #include "HSLMECCLib.hs_" } 
+ namespace _Method { #include "HSLPTLLib.hsl" } 
+ namespace _Method { #include "HSLSTCCLib.hs_" } 
+// }} ""
+// {{{ 2 "LocalSubmethodInclude" ""
+ namespace _Method {  #include __filename__ ".sub"  } 
+// }} ""
+/* {{ 2 "ProcessInsertLine" "" */ // }} ""
+// {{{ 5 "main" "Begin"
+namespace _Method { method main(  ) void {
+// }} ""
+// {{ 5 "main" "InitLocals"
+// }} ""
+// {{ 2 "AutoInitBlock" ""
+PTL::SetWashingStateDefault("RinseTime1", 5);
+PTL::SetWashingStateDefault("SoakTime1", 5);
+PTL::SetWashingStateDefault("FlowRate1", 11);
+PTL::SetWashingStateDefault("RinseTime2", 0);
+PTL::SetWashingStateDefault("SoakTime2", 0);
+PTL::SetWashingStateDefault("FlowRate2", 11);
+PTL::SetWashingStateDefault("DrainingTime", 10);
+PTL::SetWashingStateDefault("StartWashLiquid", 0);
+PTL::SetLoadingStateDefault("RecoveryOptionContinue", hslTrue);
+PTL::SetLoadingStateDefault("RecoveryOptionExclude", hslTrue);
+PTL::SetLoadingStateDefault("RecoveryOptionDefault", 0);
+PTL::SetLoadingStateDefault("KitLotCheckEnabled", hslFalse);
+::RegisterAbortHandler( "OnAbort");
+// }} ""
+// {{ 1 1 0 "52fa83a7_08ad_4f4a_b12aa09e15ad6135" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 2 1 0 "5c72675b_f50e_48c4_aa19d0c10b24a672" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 3 1 0 "8782decc_b563_4965_adfe2e27d841907d" "ML_STAR:{1C0C0CB0-7C87-11D3-AD83-0004ACB1DCB2}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._1C0C0CB0_7C87_11D3_AD83_0004ACB1DCB2("8782decc_b563_4965_adfe2e27d841907d"); // Initialize
+}
+// }} ""
+// {{ 4 1 0 "0573e36b_ae66_4daa_aabdbd281bf8cdc9" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 5 1 0 "3aea70c1_944b_4df1_bf8551d72946be1f" "{B31F3539-5D80-11d4-A5EB-0050DA737D89}"
+dialogHandle1.SetInputSize(1);
+dialogHandle1.SetInputField(0, Translate("Enter the threshold for hits"), hslString, "1.0");
+dialogHandle1.ShowInput(Translate("User Input"), hslInfinite, hslOKOnly | hslDefButton1);
+threshold = dialogHandle1.GetInputField(0);
+// }} ""
+// {{ 6 1 0 "04dd82f9_7161_43db_a11cf4252cc232f0" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 7 1 0 "a1d1194f_95ef_41c3_912899169ce2b2dc" "{B31F3544-5D80-11d4-A5EB-0050DA737D89}"
+sqlSelect = Translate("SELECT * FROM [absorbanc$] WHERE OD >") + threshold;
+// }} ""
+// {{ 8 1 0 "0188d6c5_b1cf_4042_b69599d75e808c89" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{{ 9 1 0 "7a1d1761_b92e_4f76_b82b7fc81da6a91f" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqRemoveAll(ML_STAR.Hits);
+// }} ""
+// {{ 10 1 0 "717650f1_5223_4398_8da54560aed605bb" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 11 1 0 "c9e64030_b07d_4fc2_b5f450c790c6fc25" "{B31F3534-5D80-11d4-A5EB-0050DA737D89}"
+file1.AddField("LabID", labid, hslString, 20);
+file1.AddField("PosID", posid, hslString, 20);
+file1.AddField("OD", od, hslFloat);
+file1.SetDelimiter(hslCSVDelimited);
+if( 0 == file1.Open("ADSData3.csv", hslRead, sqlselect) )
+{
+    MECC::RaiseRuntimeErrorEx(-1523711743, MECC::IDS::stepNameFileOpen, MECC::IDS::errorStepFileOpenFailed, "ADSData3.csv", "HxMetEdCompCmd");
+}
+// }} ""
+// {{ 12 1 0 "9d488b00_0be8_4481_af560a5eb228bb0f" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 13 1 0 "6e9c92ca_1c63_460c_872fdc3bcafb2496" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+{
+loopCounter1 = 0;
+while (
+   (file1.Eof() == 0)
+)
+{
+loopCounter1 = loopCounter1 + 1;
+// }} ""
+// {{ 14 1 0 "1a2ef1fb_47b7_4d85_8acee9fef0d62b86" "{B31F3536-5D80-11d4-A5EB-0050DA737D89}"
+if( 0 == file1.ReadRecord() )
+{
+    MECC::RaiseRuntimeErrorEx(-1490157312, MECC::IDS::stepNameFileRead, MECC::IDS::errorStepFailed, "", "HxMetEdCompCmd");
+}
+// }} ""
+// {{{ 15 1 0 "146c37af_e355_4a05_b480c6fc03ac7e33" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqAdd(ML_STAR.Hits, labid, posid);
+// }} ""
+// {{{ 16 1 0 "29cb01f2_aaba_426c_84bf387ec697a8b7" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TrcTrace8(Translate("Found hit : labid ="), labid, Translate(", posid ="), posid, Translate(", od ="), od, Translate(""), Translate(""));
+// }} ""
+// {{ 17 1 0 "6e9c92ca_1c63_460c_872fdc3bcafb2496" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+}
+}
+// }} ""
+// {{ 18 1 0 "aa697e67_8574_42c0_b990be219171f22e" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 19 1 0 "09d1b37c_3ef1_4d18_b05c42ec3f870645" "{E6776CB1-4681-40c6-B8A1-A538D6138CBA}"
+PTL::ResetLoadingStateAndSequences();
+PTL::SetLoadingState("UserResponseTime", hslInfinite);
+PTL::SetLoadingState("ErrorHandling", 3);
+PTL::SetLoadingState("CalibrateCarrierChannel", -1);
+PTL::SetLoadingSize(3);
+PTL::SetLoadingSequence(0, ML_STAR.Tips, 1, -10, hslTrue, hslFalse, "");
+PTL::SetLoadingSequence(1, ML_STAR.Hits, 1, -10, hslFalse, hslFalse, "");
+PTL::SetLoadingSequence(2, ML_STAR.Target, 1, -10, hslFalse, hslFalse, "");
+if( 0 == PTL::Load(ML_STAR, hslTrue) )
+{
+    PTL::RaiseRuntimeError(-1556872960, PTL::IDS::smartStepLoad, PTL::IDS::smartStepFailed, "HxGRUCompCmd");
+}
+PTL::GetLoadingSequence(0, ML_STAR.Tips);
+PTL::GetLoadingSequence(1, ML_STAR.Hits);
+PTL::GetLoadingSequence(2, ML_STAR.Target);
+// }} ""
+// {{ 20 1 0 "fc2ad373_c680_4edb_a5060d6b99918331" "{B558D25C-EB8A-4a43-8878-125E1847965C}"
+PTL::ResetPipettingStateAndSequences("");
+PTL::SetPipettingState("UserResponseTime", hslInfinite);
+PTL::SetPipettingState("ErrorHandling", 3);
+PTL::SetPipettingState("TipCountingEnabled", hslFalse);
+PTL::SetPipettingState("TipCountingIdentifier", "");
+PTL::SetPipettingState("CopyPatternEnabled", hslFalse);
+PTL::SetPipettingState("ExcludeErrorPositionsEnabled", hslFalse);
+PTL::SetPipettingState("CalibrateCarrierChannel", -1);
+PTL::SetPipettingState("InitializeChannelVariable", "");
+PTL::SetPipettingState("InitializeEnabled", hslTrue);
+PTL::SetPipettingState("TipPickupChannelVariable", "");
+PTL::SetPipettingState("TipPickupEnabled", hslTrue);
+PTL::SetPipettingState("TipPickupSequenceReloadable", hslTrue);
+PTL::SetPipettingState("TipPickupSequenceReducible", hslTrue);
+PTL::SetPipettingState("TipEjectChannelVariable", "");
+PTL::SetPipettingState("AspirateMode", 0);
+PTL::SetPipettingState("AspirateCLLDSensitivity", 1);
+PTL::SetPipettingState("AspirateFluidHeight", 0);
+PTL::SetPipettingState("AspirateSubmergeDepth", 2);
+PTL::SetPipettingState("AspirateChannelVariable", "");
+PTL::SetPipettingState("AspirateMaxHeightDiff", 0);
+PTL::SetPipettingState("AspiratePLLDSensitivity", 0);
+PTL::SetPipettingState("AspirateLiquidFollowing", hslTrue);
+PTL::SetPipettingState("AspirateUserDefinedLiquidClass", "StandardVolume_Water_DispenseJet_Empty");
+PTL::SetPipettingState("AspirateSequenceReloadable", hslFalse);
+PTL::SetPipettingState("AspirateSequenceReducible", hslFalse);
+PTL::SetPipettingState("AspirateSequenceCurrentInitialization", -10);
+PTL::SetPipettingState("AspirateSequenceCurrentFinalization", -7);
+PTL::SetPipettingState("AspirateSequenceCountInitialization", -10);
+PTL::SetPipettingState("AspirateSequenceCountFinalization", -8);
+PTL::SetPipettingState("AspirateSequenceCalibration", hslTrue);
+PTL::SetPipettingState("DispenseSubmergeDepth", 0);
+PTL::SetPipettingState("DispenseChannelVariable", "");
+PTL::SetPipettingState("DispenseCLLDSensitivity", 0);
+PTL::SetPipettingState("DispenseFluidHeight", 2);
+PTL::SetPipettingState("DispenseMode", 1);
+PTL::SetPipettingState("DispenseLiquidFollowing", hslTrue);
+PTL::SetPipettingState("DispenseUserDefinedLiquidClass", "StandardVolume_Water_DispenseJet_Empty");
+PTL::SetPipettingState("DispenseSequenceReloadable", hslFalse);
+PTL::SetPipettingState("DispenseSequenceReducible", hslFalse);
+PTL::SetPipettingState("DispenseSequenceCurrentInitialization", -10);
+PTL::SetPipettingState("DispenseSequenceCurrentFinalization", -7);
+PTL::SetPipettingState("DispenseSequenceCountInitialization", -10);
+PTL::SetPipettingState("DispenseSequenceCountFinalization", -8);
+PTL::SetPipettingState("DispenseSequenceCalibration", hslTrue);
+PTL::SetPipettingState("DispenseRestVolumeDestination", 0);
+PTL::SetPipettingState("DispenseRestVolumeToAspirateSequenceSurface", hslFalse);
+PTL::SetPipettingState("DispenseRestVolumeFluidHeight", 0);
+if( 0 == PTL::Pipette(ML_STAR, ML_STAR.Tips, ML_STAR.Hits, ML_STAR.Target, 1, 1, 30, 0, 1, hslInfinite, hslInfinite, 1, "") )
+{
+    PTL::RaiseRuntimeError(-1573650176, PTL::IDS::smartStepPipette, PTL::IDS::smartStepFailed, "HxGRUCompCmd");
+}
+// }} ""
+// {{ 21 1 0 "4a1f9769_5a6b_4557_b8623ee26bd7ea66" "{CB6F8FE9-BCEF-434c-863A-A7DE77ACFB6E}"
+PTL::ResetUnloadingStateAndSequences();
+PTL::SetUnloadingState("UserResponseTime", hslInfinite);
+PTL::SetUnloadingState("ErrorHandling", 3);
+PTL::SetUnloadingSize(3);
+PTL::SetUnloadingSequence(0, ML_STAR.Target, hslFalse, "");
+PTL::SetUnloadingSequence(1, ML_STAR.Hits, hslFalse, "");
+PTL::SetUnloadingSequence(2, ML_STAR.Tips, hslFalse, "");
+if( 0 == PTL::Unload(ML_STAR) )
+{
+    PTL::RaiseRuntimeError(-1540095744, PTL::IDS::smartStepUnload, PTL::IDS::smartStepFailed, "HxGRUCompCmd");
+}
+PTL::GetUnloadingSequence(0, ML_STAR.Target);
+PTL::GetUnloadingSequence(1, ML_STAR.Hits);
+PTL::GetUnloadingSequence(2, ML_STAR.Tips);
+// }} ""
+// {{ 22 1 0 "44dbf643_5e4a_4b29_a63db8c9ba1fa06b" "{F705F40D-918B-44B9-92A7-C1936061091E}"
+STCC::ResetFilterSequences();
+{
+variable _FilterIdsArray_D20B003E3C02436dBA7AA16FCF2FF205[];
+variable _ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205[];
+variable _ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205[];
+variable _ExperimentsArray_D20B003E3C02436dBA7AA16FCF2FF205[];
+_FilterIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetSize(0);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetSize(14);
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetSize(14);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(0, "RecordId");
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(0, 0);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(1, "TRackBC");
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(1, 1);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(2, "TLabwareId");
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(2, 2);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(3, "TPositionId");
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(3, 3);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(4, "TPositionBC");
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(4, 4);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(5, "TStatusSummary");
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(5, 5);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(6, "TSumStateDescription");
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(6, 6);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(7, "TVolume");
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(7, 7);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(8, "SRackBC");
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(8, 8);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(9, "SLabwareId");
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(9, 9);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(10, "SPositionId");
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(10, 10);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(11, "SPositionBC");
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(11, 11);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(12, "ActionDateTime");
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(12, 12);
+_ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(13, "UserName");
+_ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetAt(13, 13);
+_ExperimentsArray_D20B003E3C02436dBA7AA16FCF2FF205.SetSize(0);
+STCC::GenerateMappingFileV43Ex1(ML_STAR, seq_HitPick_Destination_All, 0, _FilterIdsArray_D20B003E3C02436dBA7AA16FCF2FF205, 0, _ColumnIdsArray_D20B003E3C02436dBA7AA16FCF2FF205, _ColumnNamesArray_D20B003E3C02436dBA7AA16FCF2FF205, _ExperimentsArray_D20B003E3C02436dBA7AA16FCF2FF205, "HitPickMappingFile.csv", 0, 0, "C:\Program Files (x86)\HAMILTON", 1);
+}
+// }} ""
+// {{ 2 "AutoExitBlock" ""
+// }} ""
+// {{{ 5 "main" "End"
+} }
+// }} ""
+// $$author=Sophytes$$valid=0$$time=2020-12-24 23:52$$checksum=b1825df7$$length=087$$
