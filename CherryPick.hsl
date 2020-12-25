@@ -1,0 +1,189 @@
+ namespace _Method { #include "HSLSeqLib.hsl" } 
+ namespace _Method { #include "HSLTrcLib.hsl" } 
+#include "CherryPick.res"
+/* {{ 2 "LibraryInsertLine" "" */ // }} ""
+variable flt_Result;
+variable str_SourceWell;
+variable str_SourcePlate;
+file HITPICK_FILE_READ;
+variable loopCounter_csvRead;
+sequence seq_HitpickSource;
+variable loopCounter1;
+sequence seq_Hitpick_Destination_All;
+global device ML_STAR ("CherryPick.lay", "ML_STAR", hslTrue);
+/* {{ 2 "VariableInsertLine" "" */ // }} ""
+// {{ 2 "TemplateIncludeBlock" ""
+ namespace _Method { #include "HSLMETEDLib.hs_" } 
+ namespace _Method { #include "HSLMECCLib.hs_" } 
+ namespace _Method { #include "HSLPTLLib.hsl" } 
+ namespace _Method { #include "HSLSTCCLib.hs_" } 
+// }} ""
+// {{{ 2 "LocalSubmethodInclude" ""
+ namespace _Method {  #include __filename__ ".sub"  } 
+// }} ""
+/* {{ 2 "ProcessInsertLine" "" */ // }} ""
+// {{{ 5 "main" "Begin"
+namespace _Method { method main(  ) void {
+// }} ""
+// {{ 5 "main" "InitLocals"
+// }} ""
+// {{ 2 "AutoInitBlock" ""
+PTL::SetWashingStateDefault("RinseTime1", 5);
+PTL::SetWashingStateDefault("SoakTime1", 5);
+PTL::SetWashingStateDefault("FlowRate1", 11);
+PTL::SetWashingStateDefault("RinseTime2", 0);
+PTL::SetWashingStateDefault("SoakTime2", 0);
+PTL::SetWashingStateDefault("FlowRate2", 11);
+PTL::SetWashingStateDefault("DrainingTime", 10);
+PTL::SetWashingStateDefault("StartWashLiquid", 0);
+PTL::SetLoadingStateDefault("RecoveryOptionContinue", hslTrue);
+PTL::SetLoadingStateDefault("RecoveryOptionExclude", hslTrue);
+PTL::SetLoadingStateDefault("RecoveryOptionDefault", 0);
+PTL::SetLoadingStateDefault("KitLotCheckEnabled", hslFalse);
+::RegisterAbortHandler( "OnAbort");
+// }} ""
+// {{ 1 1 0 "2ad7e0c1_46ee_4c2d_879cab0b2839d75c" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 2 1 0 "6c8458be_37f1_467b_88acacf8bf81ffd4" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 3 1 0 "d588326f_295e_4dda_bac8ae684ec122ca" "ML_STAR:{1C0C0CB0-7C87-11D3-AD83-0004ACB1DCB2}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._1C0C0CB0_7C87_11D3_AD83_0004ACB1DCB2("d588326f_295e_4dda_bac8ae684ec122ca"); // Initialize
+}
+// }} ""
+// {{ 4 1 0 "a6c1482e_aee1_4f6b_bd2fbb40411874e7" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 5 1 0 "e0b11623_382c_4b53_8d7b03e9bc0ce0a3" "{B31F3534-5D80-11d4-A5EB-0050DA737D89}"
+HITPICK_FILE_READ.AddField("Source_Plate", str_SourcePlate, hslString, 255);
+HITPICK_FILE_READ.AddField("Source_Well", str_SourceWell, hslString, 255);
+HITPICK_FILE_READ.AddField("Result", flt_Result, hslFloat);
+HITPICK_FILE_READ.SetDelimiter(hslCSVDelimited);
+if( 0 == HITPICK_FILE_READ.Open("C:\Users\Sophytes\Documents\HitpickFile.csv", hslRead, "SELECT * FROM[HitpickFile.csv]WHERE[Result] >=10.5") )
+{
+    MECC::RaiseRuntimeErrorEx(-1523711743, MECC::IDS::stepNameFileOpen, MECC::IDS::errorStepFileOpenFailed, "C:\Users\Sophytes\Documents\HitpickFile.csv", "HxMetEdCompCmd");
+}
+// }} ""
+// {{ 6 1 0 "e53b2134_ad8c_4ba4_b1b1d2dedd7dd659" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 7 1 0 "dad8615d_e35a_4802_aac233421085e28a" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+{
+loopCounter_csvRead = 0;
+while (
+   (HITPICK_FILE_READ.Eof() == 0)
+)
+{
+loopCounter_csvRead = loopCounter_csvRead + 1;
+// }} ""
+// {{ 8 1 0 "7a707e34_bfb2_493b_961b62aac1fdd6af" "{B31F3536-5D80-11d4-A5EB-0050DA737D89}"
+if( 0 == HITPICK_FILE_READ.ReadRecord() )
+{
+    MECC::RaiseRuntimeErrorEx(-1490157312, MECC::IDS::stepNameFileRead, MECC::IDS::errorStepFailed, "", "HxMetEdCompCmd");
+}
+// }} ""
+// {{{ 9 1 0 "15c167cd_8719_4ba4_9164c2364cfefa06" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+TrcTrace4(Translate("Plate - "), str_SourcePlate, Translate("Well - "), str_SourceWell);
+// }} ""
+// {{{ 10 1 0 "921a853d_f3fa_41e9_9aa19be851d4c50d" "{C1F3C015-47B3-4514-9407-AC2E65043419}"
+SeqAdd(seq_HitpickSource, str_SourcePlate, str_SourceWell);
+// }} ""
+// {{ 11 1 0 "da9eac25_7674_422c_98ed0a569d3b41ca" "{B31F3538-5D80-11d4-A5EB-0050DA737D89}"
+if( 0 != HITPICK_FILE_READ.Close() )
+{
+    MECC::RaiseRuntimeErrorEx(-1456602880, MECC::IDS::stepNameFileClose, MECC::IDS::errorStepFailed, "", "HxMetEdCompCmd");
+}
+HITPICK_FILE_READ.RemoveFields();
+// }} ""
+// {{ 12 1 0 "545818ad_ebfd_4ce6_81f1bdb96a181c5c" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 13 1 0 "a4167524_9c06_448f_9680cec394a275fd" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+{
+loopCounter1 = 0;
+while (
+   (seq_HitpickSource.GetCurrentPosition() > 0)
+)
+{
+AlignSequences(hslTrue, seq_HitpickSource, 1);
+loopCounter1 = loopCounter1 + 1;
+// }} ""
+// {{ 14 1 0 "bca518cc_2df6_4580_881d71f5f93b5020" "ML_STAR:{E91EFCB6-A447-4dfc-828E-7EBF29139CD2}"
+{
+	ML_STAR._E91EFCB6_A447_4dfc_828E_7EBF29139CD2("bca518cc_2df6_4580_881d71f5f93b5020"); // EasyAspirate
+}
+// }} ""
+// {{ 15 1 0 "6c132978_3a55_4e48_95ea3858b0601570" "ML_STAR:{01571348-0D66-4d27-9E97-65F9EE27C956}"
+{
+	ML_STAR._01571348_0D66_4d27_9E97_65F9EE27C956("6c132978_3a55_4e48_95ea3858b0601570"); // EasyDispense
+}
+// }} ""
+// {{ 16 1 0 "a4167524_9c06_448f_9680cec394a275fd" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+if (
+   (seq_HitpickSource.GetCurrentPosition() > 0 && seq_HitpickSource.GetMax() == 0 )
+)
+{ MECC::EndlessSequenceLoopWarning(GetFileName()); }
+
+}
+seq_HitpickSource.SetMax(seq_HitpickSource.GetTotal());
+seq_HitpickSource.SetCurrentPosition(1);
+}
+// }} ""
+// {{ 17 1 0 "69b15fde_6c37_49f0_9a8c3443c678290a" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 18 1 0 "68dff987_b01a_4640_bf1085dc46163865" "{F705F40D-918B-44B9-92A7-C1936061091E}"
+STCC::ResetFilterSequences();
+{
+variable _FilterIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA[];
+variable _ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA[];
+variable _ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA[];
+variable _ExperimentsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA[];
+_FilterIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetSize(0);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetSize(14);
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetSize(14);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(0, "RecordId");
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(0, 0);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(1, "TRackBC");
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(1, 1);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(2, "TLabwareId");
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(2, 2);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(3, "TPositionId");
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(3, 3);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(4, "TPositionBC");
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(4, 4);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(5, "TStatusSummary");
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(5, 5);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(6, "TSumStateDescription");
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(6, 6);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(7, "TVolume");
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(7, 7);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(8, "SRackBC");
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(8, 8);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(9, "SLabwareId");
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(9, 9);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(10, "SPositionId");
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(10, 10);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(11, "SPositionBC");
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(11, 11);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(12, "ActionDateTime");
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(12, 12);
+_ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(13, "UserName");
+_ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetAt(13, 13);
+_ExperimentsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA.SetSize(0);
+STCC::GenerateMappingFileV43Ex1(ML_STAR, seq_Hitpick_Destination_All, 0, _FilterIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA, 0, _ColumnIdsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA, _ColumnNamesArray_7EDE593BF2AC43a491CF6FDDAD26A3DA, _ExperimentsArray_7EDE593BF2AC43a491CF6FDDAD26A3DA, "MappingFile.xls", 0, 0, "C:\Program Files (x86)\HAMILTON", 1);
+}
+// }} ""
+// {{ 19 1 0 "dad8615d_e35a_4802_aac233421085e28a" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+}
+}
+// }} ""
+// {{ 2 "AutoExitBlock" ""
+// }} ""
+// {{{ 5 "main" "End"
+} }
+// }} ""
+// $$author=Sophytes$$valid=0$$time=2020-12-24 19:40$$checksum=108eb5ae$$length=087$$
