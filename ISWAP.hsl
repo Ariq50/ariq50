@@ -1,0 +1,190 @@
+global device ML_STAR ("ISWAP.lay", "ML_STAR", hslTrue);
+#include "ISWAP.res"
+/* {{ 2 "LibraryInsertLine" "" */ // }} ""
+variable loopCounter1;
+/* {{ 2 "VariableInsertLine" "" */ // }} ""
+// {{ 2 "TemplateIncludeBlock" ""
+ namespace _Method { #include "HSLMETEDLib.hs_" } 
+ namespace _Method { #include "HSLMECCLib.hs_" } 
+ namespace _Method { #include "HSLPTLLib.hsl" } 
+// }} ""
+// {{{ 2 "LocalSubmethodInclude" ""
+ namespace _Method {  #include __filename__ ".sub"  } 
+// }} ""
+/* {{ 2 "ProcessInsertLine" "" */ // }} ""
+// {{{ 5 "main" "Begin"
+namespace _Method { method main(  ) void {
+// }} ""
+// {{ 5 "main" "InitLocals"
+// }} ""
+// {{ 2 "AutoInitBlock" ""
+PTL::SetWashingStateDefault("RinseTime1", 5);
+PTL::SetWashingStateDefault("SoakTime1", 5);
+PTL::SetWashingStateDefault("FlowRate1", 11);
+PTL::SetWashingStateDefault("RinseTime2", 0);
+PTL::SetWashingStateDefault("SoakTime2", 0);
+PTL::SetWashingStateDefault("FlowRate2", 11);
+PTL::SetWashingStateDefault("DrainingTime", 10);
+PTL::SetWashingStateDefault("StartWashLiquid", 0);
+PTL::SetLoadingStateDefault("RecoveryOptionContinue", hslTrue);
+PTL::SetLoadingStateDefault("RecoveryOptionExclude", hslTrue);
+PTL::SetLoadingStateDefault("RecoveryOptionDefault", 0);
+PTL::SetLoadingStateDefault("KitLotCheckEnabled", hslFalse);
+::RegisterAbortHandler( "OnAbort");
+// }} ""
+// {{ 1 1 0 "fa91f349_fd0e_4053_8b25fa7e94c0186c" "ML_STAR:{1C0C0CB0-7C87-11D3-AD83-0004ACB1DCB2}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._1C0C0CB0_7C87_11D3_AD83_0004ACB1DCB2("fa91f349_fd0e_4053_8b25fa7e94c0186c"); // Initialize
+}
+// }} ""
+// {{ 2 1 0 "e45bc205_ae09_43e9_82ecc36e948d3d19" "ML_STAR:{54114402-7FA2-11D3-AD85-0004ACB1DCB2}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._54114402_7FA2_11D3_AD85_0004ACB1DCB2("e45bc205_ae09_43e9_82ecc36e948d3d19"); // LoadCarrier
+}
+// }} ""
+// {{ 3 1 0 "7b62ee3f_397e_4978_bbbc8c6e7bf43b1c" "ML_STAR:{54114402-7FA2-11D3-AD85-0004ACB1DCB2}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._54114402_7FA2_11D3_AD85_0004ACB1DCB2("7b62ee3f_397e_4978_bbbc8c6e7bf43b1c"); // LoadCarrier
+}
+// }} ""
+// {{ 4 1 0 "431b73f8_97e3_48c7_b2e82288a0f57f6c" "ML_STAR:{54114402-7FA2-11D3-AD85-0004ACB1DCB2}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._54114402_7FA2_11D3_AD85_0004ACB1DCB2("431b73f8_97e3_48c7_b2e82288a0f57f6c"); // LoadCarrier
+}
+// }} ""
+// {{ 5 1 0 "b058c3ad_0572_4b83_bd945b2ce6fc3584" "ML_STAR:{54114402-7FA2-11D3-AD85-0004ACB1DCB2}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._54114402_7FA2_11D3_AD85_0004ACB1DCB2("b058c3ad_0572_4b83_bd945b2ce6fc3584"); // LoadCarrier
+}
+// }} ""
+// {{ 6 1 0 "df4ce97b_e34a_4e23_95ad5cad08206bfa" "{B558D25C-EB8A-4a43-8878-125E1847965C}"
+PTL::ResetPipettingStateAndSequences("");
+PTL::SetPipettingState("UserResponseTime", hslInfinite);
+PTL::SetPipettingState("ErrorHandling", 3);
+PTL::SetPipettingState("TipCountingEnabled", hslFalse);
+PTL::SetPipettingState("TipCountingIdentifier", "");
+PTL::SetPipettingState("CopyPatternEnabled", hslFalse);
+PTL::SetPipettingState("ExcludeErrorPositionsEnabled", hslFalse);
+PTL::SetPipettingState("CalibrateCarrierChannel", -1);
+PTL::SetPipettingState("InitializeChannelVariable", "");
+PTL::SetPipettingState("InitializeEnabled", hslTrue);
+PTL::SetPipettingState("TipPickupChannelVariable", "");
+PTL::SetPipettingState("TipPickupEnabled", hslTrue);
+PTL::SetPipettingState("TipPickupSequenceReloadable", hslTrue);
+PTL::SetPipettingState("TipPickupSequenceReducible", hslTrue);
+PTL::SetPipettingState("TipEjectChannelVariable", "");
+PTL::SetPipettingState("AspirateMode", 0);
+PTL::SetPipettingState("AspirateCLLDSensitivity", 5);
+PTL::SetPipettingState("AspirateFluidHeight", 0);
+PTL::SetPipettingState("AspirateSubmergeDepth", 2);
+PTL::SetPipettingState("AspirateChannelVariable", "");
+PTL::SetPipettingState("AspirateMaxHeightDiff", 0);
+PTL::SetPipettingState("AspiratePLLDSensitivity", 0);
+PTL::SetPipettingState("AspirateLiquidFollowing", hslTrue);
+PTL::SetPipettingState("AspirateUserDefinedLiquidClass", "StandardVolume_DMSO_DispenseJet_Empty");
+PTL::SetPipettingState("AspirateSequenceReloadable", hslFalse);
+PTL::SetPipettingState("AspirateSequenceReducible", hslFalse);
+PTL::SetPipettingState("AspirateSequenceCurrentInitialization", -10);
+PTL::SetPipettingState("AspirateSequenceCurrentFinalization", -7);
+PTL::SetPipettingState("AspirateSequenceCountInitialization", -10);
+PTL::SetPipettingState("AspirateSequenceCountFinalization", -8);
+PTL::SetPipettingState("AspirateSequenceCalibration", hslTrue);
+PTL::SetPipettingState("DispenseSubmergeDepth", 0);
+PTL::SetPipettingState("DispenseChannelVariable", "");
+PTL::SetPipettingState("DispenseCLLDSensitivity", 0);
+PTL::SetPipettingState("DispenseFluidHeight", 5);
+PTL::SetPipettingState("DispenseMode", 1);
+PTL::SetPipettingState("DispenseLiquidFollowing", hslTrue);
+PTL::SetPipettingState("DispenseUserDefinedLiquidClass", "StandardVolume_DMSO_DispenseJet_Empty");
+PTL::SetPipettingState("DispenseSequenceReloadable", hslFalse);
+PTL::SetPipettingState("DispenseSequenceReducible", hslFalse);
+PTL::SetPipettingState("DispenseSequenceCurrentInitialization", -10);
+PTL::SetPipettingState("DispenseSequenceCurrentFinalization", -7);
+PTL::SetPipettingState("DispenseSequenceCountInitialization", -10);
+PTL::SetPipettingState("DispenseSequenceCountFinalization", -8);
+PTL::SetPipettingState("DispenseSequenceCalibration", hslTrue);
+PTL::SetPipettingState("DispenseRestVolumeDestination", 0);
+PTL::SetPipettingState("DispenseRestVolumeToAspirateSequenceSurface", hslFalse);
+PTL::SetPipettingState("DispenseRestVolumeFluidHeight", 0);
+if( 0 == PTL::Pipette(ML_STAR, ML_STAR.Tips, ML_STAR.ReagentSequence, ML_STAR.PipettingSequencePlate1to3, 1, 1, 20, 0, 2, hslInfinite, hslInfinite, 1, "") )
+{
+    PTL::RaiseRuntimeError(-1573650176, PTL::IDS::smartStepPipette, PTL::IDS::smartStepFailed, "HxGRUCompCmd");
+}
+// }} ""
+// {{ 7 1 0 "a1439d9e_0c23_4089_bd3192e68d7c29db" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+{
+loopCounter1 = 0;
+while (
+   (ML_STAR.TransportSequencePlate1to3.GetCurrentPosition() > 0)
+)
+{
+AlignSequences(hslTrue, ML_STAR.TransportSequencePlate1to3, 1);
+loopCounter1 = loopCounter1 + 1;
+// }} ""
+// {{ 8 1 0 "967adce9_9515_47fe_a3e3a65de3c3619b" "ML_STAR:{CC819D7A-5DD8-4d13-A921-D74A06460F9E}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._CC819D7A_5DD8_4d13_A921_D74A06460F9E("967adce9_9515_47fe_a3e3a65de3c3619b"); // GetPlate
+}
+// }} ""
+// {{ 9 1 0 "22ac3d85_9c2e_4f52_a8c37af1733309f7" "ML_STAR:{862562D1-B5BB-48ce-B5E4-9E37F8ABB61E}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._862562D1_B5BB_48ce_B5E4_9E37F8ABB61E("22ac3d85_9c2e_4f52_a8c37af1733309f7"); // MovePlate
+}
+// }} ""
+// {{ 10 1 0 "f7700b81_6e3d_4c1a_833779574c89ed6a" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 11 1 0 "9468f73a_f887_4cde_b4ecb426f2a688fd" "ML_STAR:{E34155E5-7529-4b6b-AE3E-CDDA40789D55}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._E34155E5_7529_4b6b_AE3E_CDDA40789D55("9468f73a_f887_4cde_b4ecb426f2a688fd"); // PutPlate
+}
+// }} ""
+// {{ 12 1 0 "a1439d9e_0c23_4089_bd3192e68d7c29db" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+if (
+   (ML_STAR.TransportSequencePlate1to3.GetCurrentPosition() > 0 && ML_STAR.TransportSequencePlate1to3.GetMax() == 0 )
+)
+{ MECC::EndlessSequenceLoopWarning(GetFileName()); }
+
+}
+ML_STAR.TransportSequencePlate1to3.SetMax(ML_STAR.TransportSequencePlate1to3.GetTotal());
+ML_STAR.TransportSequencePlate1to3.SetCurrentPosition(1);
+}
+// }} ""
+// {{ 13 1 0 "5977ada1_f98e_400c_be8257c254e3f58f" "ML_STAR:{54114400-7FA2-11D3-AD85-0004ACB1DCB2}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._54114400_7FA2_11D3_AD85_0004ACB1DCB2("5977ada1_f98e_400c_be8257c254e3f58f"); // UnloadCarrier
+}
+// }} ""
+// {{ 14 1 0 "4683380f_d089_4861_b52537a5b1045c49" "ML_STAR:{54114400-7FA2-11D3-AD85-0004ACB1DCB2}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._54114400_7FA2_11D3_AD85_0004ACB1DCB2("4683380f_d089_4861_b52537a5b1045c49"); // UnloadCarrier
+}
+// }} ""
+// {{ 15 1 0 "0d37b9a2_6671_4069_906c9d90249f5184" "ML_STAR:{54114400-7FA2-11D3-AD85-0004ACB1DCB2}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._54114400_7FA2_11D3_AD85_0004ACB1DCB2("0d37b9a2_6671_4069_906c9d90249f5184"); // UnloadCarrier
+}
+// }} ""
+// {{ 16 1 0 "657c1098_4e1b_4da5_80858c1b0078aeb7" "ML_STAR:{54114400-7FA2-11D3-AD85-0004ACB1DCB2}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._54114400_7FA2_11D3_AD85_0004ACB1DCB2("657c1098_4e1b_4da5_80858c1b0078aeb7"); // UnloadCarrier
+}
+// }} ""
+// {{ 2 "AutoExitBlock" ""
+// }} ""
+// {{{ 5 "main" "End"
+} }
+// }} ""
+// $$author=Sophytes$$valid=0$$time=2020-12-11 22:54$$checksum=cfa6775f$$length=087$$
