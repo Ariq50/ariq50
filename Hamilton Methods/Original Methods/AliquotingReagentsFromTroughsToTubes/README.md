@@ -1,4 +1,4 @@
-Method for Aliquoting and Mixing Reagent and Buffer Solution:
+SIMPLE METHOD FOR ALIQUOTING AND MIXING REAGENT AND BUFFER SOLUTIONS:
 
 This method aliquots user specified volumes of a reagent and a buffer from two seperate troughs into 1.5 mL Eppendorf tubes. The deck is loaded manually,
 
