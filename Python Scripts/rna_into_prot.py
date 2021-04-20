@@ -4,9 +4,9 @@
 #The result is printed to the console.
 
 rna = input("Enter the RNA strand you would like to convert into a Protein:\n")
-
+#Makes sure user input is in case required by RNA Codon Table:
 RNA_upper = rna.upper()
-
+#RNA Codon Table:
 RNA_Codons = {
     # 'M' - START, '*' - STOP
     "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",
@@ -31,7 +31,7 @@ RNA_Codons = {
     "UAU": "Y", "UAC": "Y",
     "UAA": "*", "UAG": "*", "UGA": "*"
 }
-	
+#Iterates through RNA Codon Table array and generates new array composed of proteins associated with codons of RNA strand input by user:	
 protein = ""
 for i in range(0, len(RNA_upper), 3):
 	codon = RNA_upper[i:i+3]
