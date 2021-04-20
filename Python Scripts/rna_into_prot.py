@@ -31,7 +31,8 @@ RNA_Codons = {
     "UAU": "Y", "UAC": "Y",
     "UAA": "*", "UAG": "*", "UGA": "*"
 }
-#Iterates through RNA Codon Table array and generates new array composed of proteins associated with codons of RNA strand input by user:	
+#Iterates through RNA strand string array entered by the user, compares codons from RNA strand to codon-to-protein correspondences in the RNA Codon Table
+#and generates new string array composed of the associated proteins:	
 protein = ""
 for i in range(0, len(RNA_upper), 3):
 	codon = RNA_upper[i:i+3]
