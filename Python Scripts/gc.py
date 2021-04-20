@@ -1,3 +1,5 @@
+#Computing GC Content
+
 #Calculates the GC content of a protein
 
 gene = open("BRCA1_SP1.txt", "r")
