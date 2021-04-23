@@ -1,0 +1,110 @@
+global device ML_STAR ("384SerialDilution.lay", "ML_STAR", hslTrue);
+#include "384SerialDilution.res"
+/* {{ 2 "LibraryInsertLine" "" */ // }} ""
+variable loopCounter1;
+variable loopCounter2;
+/* {{ 2 "VariableInsertLine" "" */ // }} ""
+// {{ 2 "TemplateIncludeBlock" ""
+ namespace _Method { #include "HSLMETEDLib.hs_" } 
+ namespace _Method { #include "HSLMECCLib.hs_" } 
+ namespace _Method { #include "HSLPTLLib.hsl" } 
+// }} ""
+// {{{ 2 "LocalSubmethodInclude" ""
+ namespace _Method {  #include __filename__ ".sub"  } 
+// }} ""
+/* {{ 2 "ProcessInsertLine" "" */ // }} ""
+// {{{ 5 "main" "Begin"
+namespace _Method { method main(  ) void {
+// }} ""
+// {{ 5 "main" "InitLocals"
+// }} ""
+// {{ 2 "AutoInitBlock" ""
+PTL::SetWashingStateDefault("RinseTime1", 5);
+PTL::SetWashingStateDefault("SoakTime1", 5);
+PTL::SetWashingStateDefault("FlowRate1", 11);
+PTL::SetWashingStateDefault("RinseTime2", 0);
+PTL::SetWashingStateDefault("SoakTime2", 0);
+PTL::SetWashingStateDefault("FlowRate2", 11);
+PTL::SetWashingStateDefault("DrainingTime", 10);
+PTL::SetWashingStateDefault("StartWashLiquid", 0);
+PTL::SetLoadingStateDefault("RecoveryOptionContinue", hslTrue);
+PTL::SetLoadingStateDefault("RecoveryOptionExclude", hslTrue);
+PTL::SetLoadingStateDefault("RecoveryOptionDefault", 0);
+PTL::SetLoadingStateDefault("KitLotCheckEnabled", hslFalse);
+::RegisterAbortHandler( "OnAbort");
+// }} ""
+// {{ 1 1 0 "9582b644_3120_44fb_a6c61c55f07ca4a7" "ML_STAR:{1C0C0CB0-7C87-11D3-AD83-0004ACB1DCB2}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._1C0C0CB0_7C87_11D3_AD83_0004ACB1DCB2("9582b644_3120_44fb_a6c61c55f07ca4a7"); // Initialize
+}
+// }} ""
+// {{ 2 1 0 "aabd0b8f_567c_48b2_a40d0445b6af6804" "ML_STAR:{BAE15959-BFAF-451b-AEBC-25AE7E04EB82}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._BAE15959_BFAF_451b_AEBC_25AE7E04EB82("aabd0b8f_567c_48b2_a40d0445b6af6804"); // Head384TipPickUp
+}
+// }} ""
+// {{ 3 1 0 "6440f468_5857_4fd3_b860ac0f2e27d523" "ML_STAR:{F80572BC-ED64-4dc5-8D51-2BB7EA308DCD}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._F80572BC_ED64_4dc5_8D51_2BB7EA308DCD("6440f468_5857_4fd3_b860ac0f2e27d523"); // Head384TipEject
+}
+// }} ""
+// {{ 4 1 0 "b60f5d85_98b8_4f9d_90c139091328566e" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+{
+loopCounter1 = 0;
+while (
+   (ML_STAR.TargetPlate_Diluent.GetCurrentPosition() > 0)
+)
+{
+AlignSequences(hslTrue, ML_STAR.TargetPlate_Diluent, 1);
+loopCounter1 = loopCounter1 + 1;
+// }} ""
+// {{ 5 1 0 "ab885a18_3f09_4cf8_b4a7102b4a514509" "ML_STAR:{F9C8831D-6785-415e-8875-720FF46AC35C}"
+{
+	ML_STAR._F9C8831D_6785_415e_8875_720FF46AC35C("ab885a18_3f09_4cf8_b4a7102b4a514509"); // EasyHead384Aspirate
+}
+// }} ""
+// {{ 6 1 0 "a41a252c_552a_430a_9813c3422674877e" "ML_STAR:{63ECF88F-F20B-4cd9-A5FF-C9BA9A057BB8}"
+{
+	ML_STAR._63ECF88F_F20B_4cd9_A5FF_C9BA9A057BB8("a41a252c_552a_430a_9813c3422674877e"); // EasyHead384Dispense
+}
+// }} ""
+// {{ 7 1 0 "b60f5d85_98b8_4f9d_90c139091328566e" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+if (
+   (ML_STAR.TargetPlate_Diluent.GetCurrentPosition() > 0 && ML_STAR.TargetPlate_Diluent.GetMax() == 0 )
+)
+{ MECC::EndlessSequenceLoopWarning(GetFileName()); }
+
+}
+ML_STAR.TargetPlate_Diluent.SetMax(ML_STAR.TargetPlate_Diluent.GetTotal());
+ML_STAR.TargetPlate_Diluent.SetCurrentPosition(1);
+}
+// }} ""
+// {{ 8 1 0 "8505c74d_13e2_452e_80ec890444421c49" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+{
+for(loopCounter2 = 0; loopCounter2 < 23;)
+{
+loopCounter2 = loopCounter2 + 1;
+// }} ""
+// {{ 9 1 0 "73352ec7_7332_4feb_9b0d587d4f66e870" "ML_STAR:{F9C8831D-6785-415e-8875-720FF46AC35C}"
+{
+	ML_STAR._F9C8831D_6785_415e_8875_720FF46AC35C("73352ec7_7332_4feb_9b0d587d4f66e870"); // EasyHead384Aspirate
+}
+// }} ""
+// {{ 10 1 0 "0383c89e_dd78_4c67_93894bddb52fc4da" "ML_STAR:{63ECF88F-F20B-4cd9-A5FF-C9BA9A057BB8}"
+{
+	ML_STAR._63ECF88F_F20B_4cd9_A5FF_C9BA9A057BB8("0383c89e_dd78_4c67_93894bddb52fc4da"); // EasyHead384Dispense
+}
+// }} ""
+// {{ 11 1 0 "8505c74d_13e2_452e_80ec890444421c49" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+}
+}
+// }} ""
+// {{ 2 "AutoExitBlock" ""
+// }} ""
+// {{{ 5 "main" "End"
+} }
+// }} ""
+// $$author=Sophytes$$valid=0$$time=2021-01-04 19:46$$checksum=33ae0bc7$$length=087$$

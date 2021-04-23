@@ -1,0 +1,126 @@
+global device ML_STAR ("COREGripperUsingArrays.lay", "ML_STAR", hslTrue);
+#include "COREGripperUsingArrays.res"
+/* {{ 2 "LibraryInsertLine" "" */ // }} ""
+sequence Source_Sequences[];
+sequence Target_Sequences[];
+variable loopCounter1;
+variable NumOfEntries;
+variable FrontChannel;
+/* {{ 2 "VariableInsertLine" "" */ // }} ""
+// {{ 2 "TemplateIncludeBlock" ""
+ namespace _Method { #include "HSLMETEDLib.hs_" } 
+ namespace _Method { #include "HSLMECCLib.hs_" } 
+ namespace _Method { #include "HSLPTLLib.hsl" } 
+// }} ""
+// {{{ 2 "LocalSubmethodInclude" ""
+ namespace _Method {  #include __filename__ ".sub"  } 
+// }} ""
+/* {{ 2 "ProcessInsertLine" "" */ // }} ""
+// {{{ 5 "main" "Begin"
+namespace _Method { method main(  ) void {
+// }} ""
+// {{ 5 "main" "InitLocals"
+// }} ""
+// {{ 2 "AutoInitBlock" ""
+PTL::SetWashingStateDefault("RinseTime1", 5);
+PTL::SetWashingStateDefault("SoakTime1", 5);
+PTL::SetWashingStateDefault("FlowRate1", 11);
+PTL::SetWashingStateDefault("RinseTime2", 0);
+PTL::SetWashingStateDefault("SoakTime2", 0);
+PTL::SetWashingStateDefault("FlowRate2", 11);
+PTL::SetWashingStateDefault("DrainingTime", 10);
+PTL::SetWashingStateDefault("StartWashLiquid", 0);
+PTL::SetLoadingStateDefault("RecoveryOptionContinue", hslTrue);
+PTL::SetLoadingStateDefault("RecoveryOptionExclude", hslTrue);
+PTL::SetLoadingStateDefault("RecoveryOptionDefault", 0);
+PTL::SetLoadingStateDefault("KitLotCheckEnabled", hslFalse);
+::RegisterAbortHandler( "OnAbort");
+// }} ""
+// {{ 1 1 0 "52443e64_9aa4_4606_8f9b0edaaad27ff3" "ML_STAR:{1C0C0CB0-7C87-11D3-AD83-0004ACB1DCB2}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._1C0C0CB0_7C87_11D3_AD83_0004ACB1DCB2("52443e64_9aa4_4606_8f9b0edaaad27ff3"); // Initialize
+}
+// }} ""
+// {{ 2 1 0 "d42c27dc_3da5_4460_a1c1ed27cb602c7e" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 3 1 0 "fc99c9e0_4e42_4bbf_aea363dc754b786e" "{B31F3543-5D80-11d4-A5EB-0050DA737D89}"
+FrontChannel = 0;
+// }} ""
+// {{ 4 1 0 "a9d67857_5119_4c71_9cc47bbd01ad7e6b" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 5 1 0 "162fc0fe_1f39_4b3b_aa48f26e02e4bace" "{4900C1F7-0FB7-4033-8253-760BDB9354DC}"
+Source_Sequences.SetSize(0);
+// }} ""
+// {{ 6 1 0 "8481e64d_e3fc_4913_a4569fbf143386fc" "{4900C1F7-0FB7-4033-8253-760BDB9354DC}"
+Target_Sequences.SetSize(0);
+// }} ""
+// {{ 7 1 0 "b4bc2190_35be_4993_ad1740ece275b64d" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 8 1 0 "d204c816_ffd7_4734_87c9c7dcc3c8646e" "{F17B7626-27CB-47f1-8477-8C4158339A6D}"
+Source_Sequences.AddAsLast(ML_STAR.Input1);
+// }} ""
+// {{ 9 1 0 "355b91bd_b3b9_4883_96a19ed6fdac7e47" "{F17B7626-27CB-47f1-8477-8C4158339A6D}"
+Source_Sequences.AddAsLast(ML_STAR.Input2);
+// }} ""
+// {{ 10 1 0 "45914595_3aa9_4152_b4b664ad610fac1e" "{F17B7626-27CB-47f1-8477-8C4158339A6D}"
+Source_Sequences.AddAsLast(ML_STAR.Input3);
+// }} ""
+// {{ 11 1 0 "3c79eaea_85ce_47dd_b7ca65bbb1edd57e" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 12 1 0 "16303965_42c6_404c_9c2ed4a584b2efa7" "{F17B7626-27CB-47f1-8477-8C4158339A6D}"
+Target_Sequences.AddAsLast(ML_STAR.Output1);
+// }} ""
+// {{ 13 1 0 "185afa77_a4aa_4728_981de815cb8dc294" "{F17B7626-27CB-47f1-8477-8C4158339A6D}"
+Target_Sequences.AddAsLast(ML_STAR.Output2);
+// }} ""
+// {{ 14 1 0 "fc6c6bb5_b2ee_4daf_98369122b2f6b842" "{F17B7626-27CB-47f1-8477-8C4158339A6D}"
+Target_Sequences.AddAsLast(ML_STAR.Output3);
+// }} ""
+// {{ 15 1 0 "ee18614f_768d_489b_87bfcb0921e3f3bd" "{72EACF88-8D49-43e3-92C8-2F90E81E3260}"
+NumOfEntries=Source_Sequences.GetSize();
+// }} ""
+// {{ 16 1 0 "3a0823bf_5da9_431a_9fa44c24ab6d8b35" "{F07B0071-8EFC-11d4-A3BA-002035848439}"
+
+// }} ""
+// {{ 17 1 0 "f7c8029b_b434_4ff0_8500a1e5249a3d86" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+{
+for(loopCounter1 = 0; loopCounter1 < NumOfEntries;)
+{
+loopCounter1 = loopCounter1 + 1;
+// }} ""
+// {{{ 18 1 0 "97be32a1_2f5a_413d_8c37f3ed2449dfaa" "{7C4EF7A7-39BE-406a-897F-71F3A35B4093}"
+CalculateFrontChannel();
+// }} ""
+// {{ 19 1 0 "de26c9ad_cb8f_4832_b9fcaf4d3108d3d3" "ML_STAR:{A108628C-BEB7-4CB6-99FD-8523302C700F}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._A108628C_BEB7_4CB6_99FD_8523302C700F("de26c9ad_cb8f_4832_b9fcaf4d3108d3d3"); // ZSwapGetPlate
+}
+// }} ""
+// {{ 20 1 0 "ba8aca79_c0f5_470f_a6cb73833abfd4f4" "ML_STAR:{21E50809-DA69-4E9D-99CF-24FA577C214E}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._21E50809_DA69_4E9D_99CF_24FA577C214E("ba8aca79_c0f5_470f_a6cb73833abfd4f4"); // ZSwapMovePlate
+}
+// }} ""
+// {{ 21 1 0 "b9bc96f8_ce54_4990_95f9a1be72be4d86" "ML_STAR:{9DF3DD4B-3B5E-4750-8989-04458D1B134B}"
+{
+	variable arrRetValues[];
+	arrRetValues = ML_STAR._9DF3DD4B_3B5E_4750_8989_04458D1B134B("b9bc96f8_ce54_4990_95f9a1be72be4d86"); // ZSwapPlacePlate
+}
+// }} ""
+// {{ 22 1 0 "f7c8029b_b434_4ff0_8500a1e5249a3d86" "{B31F3532-5D80-11d4-A5EB-0050DA737D89}"
+}
+}
+// }} ""
+// {{ 2 "AutoExitBlock" ""
+// }} ""
+// {{{ 5 "main" "End"
+} }
+// }} ""
+// $$author=Sophytes$$valid=0$$time=2021-01-25 20:00$$checksum=acfb7088$$length=087$$
