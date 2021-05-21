@@ -1,10 +1,11 @@
-package minecraftplatformer;
+package genesisblocks;
 
 import java.applet.*; 
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;
 
+@SuppressWarnings("deprecation")
 public class Component extends Applet implements Runnable {
 	private static final long serialVersionUID = 1L;
 	
@@ -15,12 +16,12 @@ public class Component extends Applet implements Runnable {
 	public static double dir = 0;
 	
 	public static Dimension realSize;
-	public static Dimension size = new Dimension(700, 560);
+	public static Dimension size = new Dimension(1000, 700);
 	public static Dimension pixel = new Dimension(size.width / pixelSize, size.height / pixelSize);
 	
 	public static Point mse = new Point(0, 0);
 	
-	public static String name = "Minecraft 2D Platformer Adventure!";
+	public static String name = "Genesis Blocks!";
 	
 	public static boolean isRunning = false;
 	public static boolean isMoving = false;

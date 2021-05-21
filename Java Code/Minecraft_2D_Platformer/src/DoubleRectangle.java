@@ -1,4 +1,4 @@
-package minecraftplatformer;
+package genesisblocks;
 
 public class DoubleRectangle {
 	public double x, y, width, height;

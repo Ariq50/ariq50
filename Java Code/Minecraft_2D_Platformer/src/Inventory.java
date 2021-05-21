@@ -1,9 +1,9 @@
-package minecraftplatformer;
+package genesisblocks;
 
-import java.awt.*;
+import java.awt.*; 
 import java.awt.event.*;
 
-import minecraftplatformer.Component;
+import genesisblocks.Component;
 
 public class Inventory {
 	public static Cell[] invBar = new Cell[Tile.invLength];
@@ -35,6 +35,13 @@ public class Inventory {
 		invBar[1].id = Tile.grass;
 		invBar[2].id = Tile.sand;
 		invBar[3].id = Tile.wood;
+		invBar[4].id = Tile.stone;
+		invBar[5].id = Tile.lumber;
+		invBar[6].id = Tile.graphite;
+		invBar[7].id = Tile.snow;
+		invBar[8].id = Tile.ice;
+		invBar[9].id = Tile.flowers;
+		invBar[10].id = Tile.bricks;
 	}
 	
 	public static void click(MouseEvent e) {

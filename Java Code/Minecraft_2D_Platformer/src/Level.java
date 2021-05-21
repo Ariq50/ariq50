@@ -1,4 +1,4 @@
-package minecraftplatformer;
+package genesisblocks;
 
 import java.awt.*;
 import java.util.*;
@@ -96,7 +96,9 @@ public class Level {
 								}
 							} else if(Component.isMouseRight) {
 								if(block[x][y].id == Tile.air) { 
-								if(sid == Tile.earth || sid == Tile.grass || sid == Tile.sand || sid == Tile.wood) {
+								if(sid == Tile.earth || sid == Tile.grass || sid == Tile.sand || sid == Tile.wood 
+										|| sid == Tile.stone || sid == Tile.lumber || sid == Tile.graphite || sid == Tile.snow
+										|| sid == Tile.ice || sid == Tile.flowers || sid == Tile.bricks) {
 									block[x][y].id = sid;
 									try {
 									if(block[x][y + 1].id == Tile.grass) {

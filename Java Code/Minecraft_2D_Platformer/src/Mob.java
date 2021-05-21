@@ -1,10 +1,11 @@
-package minecraftplatformer;
+package genesisblocks;
 
-import java.awt.*;
+import java.awt.*; 
 import java.util.*;
 
-import minecraftplatformer.Component;
+import genesisblocks.Component;
 
+@SuppressWarnings("unused")
 public class Mob extends DoubleRectangle	{
 	public int[] id;
 	

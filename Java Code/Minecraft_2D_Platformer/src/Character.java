@@ -1,4 +1,4 @@
-package minecraftplatformer;
+package genesisblocks;
 
 import java.awt.*;
 
