@@ -1,3 +1,3 @@
-import shutil
+import send2trash
 
-shutil.rmtree('C:\\Users\\Sophytes\\Documents')
+send2trash.send2trash('C:\\Users\\Sophytes\\Documents')
