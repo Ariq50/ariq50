@@ -5,7 +5,7 @@ package genesisblocks;
 import java.awt.*;
 import java.util.*;
 
-public class Level {
+public class Level { //Setting size paramters for game world
 	public static int worldW = 50, worldH = 50;
 	public Block[][] block = new Block[worldW][worldH];
 	
