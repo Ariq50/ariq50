@@ -1,3 +1,5 @@
+//This class handles generation of game world
+
 package genesisblocks;
 
 import java.awt.*;
