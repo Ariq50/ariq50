@@ -1,3 +1,6 @@
+//This class handles the creation of the inventory of blocks the player uses to construct different structures in the game world. 
+//It also handles user input related to the user grabbing blocks from the inventory and depositing them into the game world.
+
 package genesisblocks;
 
 import java.awt.*; 
@@ -30,7 +33,7 @@ public class Inventory {
 				y++;
 			}
 		}
-		
+		//Array values associated with differnt inventory tile types
 		invBar[0].id = Tile.earth;
 		invBar[1].id = Tile.grass;
 		invBar[2].id = Tile.sand;
@@ -43,7 +46,7 @@ public class Inventory {
 		invBar[9].id = Tile.flowers;
 		invBar[10].id = Tile.bricks;
 	}
-	
+	//Code for handling user input and user driven changes to game world layout
 	public static void click(MouseEvent e) {
 		if(e.getButton() == 1) {
 			if(isOpen) {
@@ -67,17 +70,17 @@ public class Inventory {
 					}
 				}
 			}
-				
+				//Attaches tile user selects to mouse cursor and allows user to place selected tile at chosen location in game world
 				for(int i = 0; i < invBag.length; i++) {
 					if(invBag[i].contains(new Point(Component.mse.x / Component.pixelSize, Component.mse.y / Component.pixelSize))) {
 						if(invBag[i].id != Tile.air && !isHolding ) {
 						holdingID = invBag[i].id;
 						invBag[i].id = Tile.air;
-						
+						//Selected tile from inventory attached to mouse cursor
 						isHolding = true;
 						} else if(isHolding && invBag[i].id == Tile.air) {
 							invBag[i].id = holdingID;
-							
+						//Places tile selected into game world	
 							isHolding = false;
 					} else if (isHolding && invBag[i].id != Tile.air) {
 						int[] con = invBag[i].id;
@@ -90,7 +93,7 @@ public class Inventory {
 			}
 		}
 	}
-}	
+}	//Draws inventory
 	public void render(Graphics g) {
 		for(int i = 0; i < invBar.length; i++) {
 			boolean isSelected = false;
