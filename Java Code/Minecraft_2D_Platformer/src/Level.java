@@ -83,7 +83,7 @@ public class Level { //Setting size paramters for game world
 					}
 				}	
 			}
-	
+	//Method for placing out blocks user chooses to set up in game world
 	public void building(int camX, int camY, int renW, int renH) {
 		if(Component.isMouseLeft || Component.isMouseRight) {
 			for(int x = (camX / Tile.tileSize); x < (camX / Tile.tileSize) + renW; x++) {
@@ -122,7 +122,7 @@ public class Level { //Setting size paramters for game world
 		building(camX, camY, renW, renH);
 		}
 	}
-	
+	//Method that handles graphics rendering for game world
 	public void render(Graphics g, int camX, int camY, int renW, int renH) {
 		for(int x = (camX / Tile.tileSize); x < (camX / Tile.tileSize) + renW; x++) {
 			for(int y = (camY / Tile.tileSize); y < (camY / Tile.tileSize) + renH; y++) {
