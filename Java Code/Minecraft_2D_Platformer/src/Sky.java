@@ -1,3 +1,6 @@
+//Class the handles generating background sky of game world. Class tracks passage of time from point game world is first instantiated and adjusts the shade
+//of the sky color to reflect time of day (morning, noontime, afternoon, night)
+
 package genesisblocks;
 
 import java.awt.*;
