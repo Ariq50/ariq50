@@ -1,3 +1,5 @@
+//Class for generating player character
+
 package genesisblocks;
 
 import java.awt.*;
@@ -16,7 +18,7 @@ public class Character extends DoubleRectangle {
 	public Character(int width, int height) {
 		setBounds((Component.pixel.width / 2) - (width / 2), (Component.pixel.height / 2) - (height / 2), width, height);
 	}
-	
+	//Method handling player character physics
 	public void tick() {
 		if(!isJumping && !isCollidingWithBlock(new Point((int) (x + 2), (int) (y + (int) height)), new Point((int) (x + width - 2), (int)(y + height)))) {
 			y += fallingSpeed;
@@ -74,7 +76,7 @@ public class Character extends DoubleRectangle {
 					}
 				}
 			}
-	
+	//Collision detection method
 	public boolean isCollidingWithBlock(Point pt1, Point pt2) {
 		for(int x = (int) (this.x / Tile.tileSize); x < (int) (this.x / Tile.tileSize + 3); x++) {
 			for(int y = (int) (this.y / Tile.tileSize); y < (int) (this.y / Tile.tileSize + 3); y++) {
@@ -89,7 +91,7 @@ public class Character extends DoubleRectangle {
 		
 		return false;
 	}
-	
+	//Graphics rendering
 	public void render(Graphics g) {
 		if(Component.dir == movementSpeed) {
 		g.drawImage(Tile.tileset_terrain, (int) x - (int) Component.sX, (int) y - (int) Component.sY, (int) (x + width) - (int) Component.sX, (int) (y + height) - (int) Component.sY, /**/
