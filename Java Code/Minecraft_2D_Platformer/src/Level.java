@@ -116,7 +116,8 @@ public class Level { //Setting size paramters for game world
 				}
 			}
 		}
-	}	
+	}
+	//Method for moving camera around the game world
 	public void tick(int camX, int camY, int renW, int renH) {
 		if(!Inventory.isOpen) {
 		building(camX, camY, renW, renH);
