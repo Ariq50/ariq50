@@ -26,7 +26,7 @@ public class Screen extends JPanel implements Runnable {
 	public static Save save;
 	public static Store store;
 	
-	public static Enemy[] enemies = new Enemy[100];
+	public static Enemy[] enemies = new Enemy[1];
 	
 	public Screen(Frame frame) {
 		frame.addMouseListener(new KeyHandle());
