@@ -1,6 +1,6 @@
 #Translating RNA into Protein
 
-#The following script takes user input, in the form of an RNA strand and converts it into the corresponding protein string, using the RNA Codon Table. 
+#The following script takes user input, in the form of a string representing an RNA strand and converts it into the corresponding protein string, using the RNA Codon Table. 
 #The result is printed to the console.
 
 rna = input("Enter the RNA strand you would like to convert into a Protein:\n")
