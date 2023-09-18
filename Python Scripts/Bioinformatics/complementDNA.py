@@ -2,7 +2,7 @@
 
 #The following script first request the user to enter a DNA strand. Next the DNA strand entered by the user is reversed and complemented. This result is printed to the console.
 
-string = input("Enter the DNA strand you would like to complement:\n")
+string = input("Enter the DNA strand you would like to know the complement of:\n")
 
 DNA_upper = string.upper()
 
