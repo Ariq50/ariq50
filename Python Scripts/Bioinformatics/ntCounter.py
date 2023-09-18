@@ -1,6 +1,6 @@
 # Script that calculates the number of times each nucleotide (A, C, G, T) is present in a given DNA strand.
 
-dnaStrand = "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC"
+dnaStrand = input("Please enter a DNA strand (no longer than 1000 nt) whose nucleotide count (# of A's, C's, etc.) you would like to know: \n")
 
 def nt_loop(dnaStrand):
     nt_A = 0
