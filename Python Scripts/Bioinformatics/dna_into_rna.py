@@ -4,7 +4,7 @@
 
 #to replace the T's (thymine's) with U's (uracil's). The result is then printed to the console.
 
-base_str = "GATGGAACTTGACTACGTAAATT"
+base_str = input("Please enter a DNA strand to convert to its RNA equivalent:")
 
 result = base_str.replace('T', 'U')
 
