@@ -6,6 +6,8 @@
 
 base_str = input("Please enter a DNA strand to convert to its RNA equivalent:")
 
-result = base_str.replace('T', 'U')
+def dnaIntoRNA(base_str):
+    result = base_str.replace('T', 'U')
+    return result
 
-print(result)
+print(*dnaIntoRNA(base_str))
