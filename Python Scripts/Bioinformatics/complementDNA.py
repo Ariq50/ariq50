@@ -8,8 +8,17 @@ DNA_upper = string.upper()
 
 complementDNA = (DNA_upper[::-1])
 
-for i in complementDNA:
-	if (i == "A"): print("T")
-	elif(i == "T"): print("A")
-	elif(i == "G"): print("C")
-	elif(i == "C"): print("G") 
+def complementDNAStrand(complementDNA):
+        newDNAStrand = ""
+        for i in range(0, len(complementDNA)):
+                if complementDNA[i] == "A":
+                        newDNAStrand += "T"
+                elif complementDNA[i] == "C":
+                        newDNAStrand += "G"
+                elif complementDNA[i] == "T":
+                        newDNAStrand += "A"
+                elif complementDNA[i] == "G":
+                        newDNAStrand += "C"
+        return newDNAStrand[::-1]
+print(*complementDNAStrand(complementDNA))
+
