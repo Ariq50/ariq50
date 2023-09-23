@@ -59,6 +59,9 @@ public class Component extends Applet implements Runnable {
 		sky = new Sky();
 		spawner = new Spawner();
 		
+		//Loading music
+		SoundHandler.RunMusic("res/Day Dream_ By HeatleyBros-HQ.wav");
+		
 		//Starting game loop.
 		isRunning = true;
 		new Thread(this).start();
