@@ -60,7 +60,7 @@ public class Component extends Applet implements Runnable {
 		spawner = new Spawner();
 		
 		//Loading music
-		SoundHandler.RunMusic("res/Day Dream_ By HeatleyBros-HQ.wav");
+		SoundHandler.RunMusic("res/soundtrack.wav");
 		
 		//Starting game loop.
 		isRunning = true;
