@@ -15,7 +15,8 @@ namespace calcProteinMass
             double massProtein = 0;
 
             calcMass c = new calcMass();
-            Console.WriteLine("The mass of the protein is: " + c.calcProteinMass(protein));
+            Console.WriteLine("The mass of the protein is:");
+            Console.WriteLine("{0:0.00}", c.calcProteinMass(protein));
         }
         public double calcProteinMass(string protein)
         {
