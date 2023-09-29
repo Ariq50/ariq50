@@ -8,6 +8,7 @@ The result is printed to the console.
 using System;
 using System.Collections.Generic;
 using System.Text;
+using complementDNA;
 
 namespace complementDNA
 {
