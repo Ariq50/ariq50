@@ -1,3 +1,10 @@
+/*
+Complementing a Strand of DNA
+
+The following script first request the user to enter a DNA strand. Next the DNA strand entered by the user is reversed and complemented. 
+The result is printed to the console.
+*/
+
 using System;
 using System.Collections.Generic;
 using System.Text;
