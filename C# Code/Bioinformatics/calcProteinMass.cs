@@ -1,3 +1,10 @@
+/*
+This script calculates the mass of a protein. The user is requested to enter the protein whose mass they want to calculate. A function
+(calcProteinMass(protein) is called and the protein string is passed to it as a parameter. The function iterates through the string
+parameter and moves through a series of if-else-if statements, summing up the mass of the protein, in accordance with the mass values
+associated with the different components of the protein. The mass of the protein is then printed to the console. 
+*/
+
 using System;
 using System.Collections.Generic;
 using System.Text;
