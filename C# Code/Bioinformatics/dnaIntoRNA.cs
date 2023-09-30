@@ -8,6 +8,7 @@ to replace the T's (thymine's) with U's (uracil's). The result is then printed t
 using System;
 using System.Collections.Generic;
 using System.Text;
+using dnaIntoRNA;
 
 namespace dnaIntoRNA
 {
