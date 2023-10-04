@@ -1,3 +1,9 @@
+/*Counting Point Mutations
+
+The following script takes input from the user, in the form of two strings representing two different DNA strands.
+A function is then used to iterate through both strings and compare the nucleotide bases in them. If the two characters being compared
+do not match, the counter is incremented and the result printed to the console.
+*/
 using System;
 using System.Collections.Generic;
 using System.Text;
