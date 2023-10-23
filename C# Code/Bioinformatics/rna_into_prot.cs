@@ -1,3 +1,10 @@
+/*Translating RNA into Protein
+
+The following script takes user input, in the form of a string representing an RNA strand and converts it into the corresponding protein string, 
+using a switch-case statement to represent the RNA Codon Table and a for loop to iterate through the RNA strand, breaking it into three element
+substrings to check in the switch-case statement, for building a new string representing the corresponding proteins. 
+The result is then printed to the console.
+*/
 using System;
 using System.Collections.Generic;
 using System.Text;
