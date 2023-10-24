@@ -7,7 +7,7 @@ Calculates the GC content of a protein
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Linq;
+using gcContent;
 
 namespace gcContent
 {
