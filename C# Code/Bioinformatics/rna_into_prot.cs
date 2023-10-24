@@ -8,7 +8,6 @@ The result is then printed to the console.
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Linq;
 using rnaIntoProtein;
 
 namespace rnaIntoProtein
