@@ -24,7 +24,7 @@ namespace proteinMeltTemp
 
             int l = gene.Length;
 
-            for (int i = 0; i < l; i++ )
+            for (int i = 0; i < l; i++)
             {
                 if (gene[i] == 'g')
                 {
