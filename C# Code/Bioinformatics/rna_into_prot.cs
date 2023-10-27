@@ -21,8 +21,8 @@ namespace rnaIntoProtein
             string rna = Console.ReadLine();
 
             string strand = rna.ToUpper();
-
-           string protein = "";
+            
+            string protein = "";
            
            for (var i = 0; i < strand.Length; i += 3)
             {
