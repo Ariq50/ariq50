@@ -14,7 +14,7 @@ namespace rnaIntoProtein
 {
     class rnaIntoProt
     {
-        static void Main(string[] args)
+       public static void Main(string[] args)
         {
             Console.WriteLine("Please enter the RNA strand you would like to convert into a Protein:");
 
