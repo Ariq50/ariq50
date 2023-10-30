@@ -14,7 +14,7 @@ namespace complementDNA
 {
     class compDNA
     {
-        static void Main(string[] args) 
+       public static void Main(string[] args) 
         {
             Console.WriteLine("Please enter a DNA strand whose complement you would like to find: ");
             
