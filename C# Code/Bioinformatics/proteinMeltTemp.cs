@@ -9,7 +9,7 @@ namespace proteinMeltTemp
 {
     class protMT
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Please enter a valid path for the FASTA file of a Protein: ");
 
