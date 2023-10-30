@@ -14,7 +14,7 @@ namespace calcProteinMass
 {
     class calcMass 
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Please enter a protein whose mass you want to determine: ");
 
