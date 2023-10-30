@@ -8,7 +8,7 @@ namespace ntCounter
 {
         class ntCount
         {
-                static void  Main(string[] args)
+                public static void  Main(string[] args)
             {
                 Console.WriteLine("Please enter a DNA strand (no longer than 1000 nt) whose nucleotide count you would like to know: ");
 
