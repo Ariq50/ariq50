@@ -6,9 +6,11 @@ namespace findMotif
 {
     class findMot
     {
-        string str = "";
-        static void Main(string[] args)
+        
+       public static void Main(string[] args)
         {
+            string str = "";
+            
             Console.WriteLine("Please enter a DNA strand (no longer than 1000 nt in length): ");
 
             string dnaStrand = Console.ReadLine();
