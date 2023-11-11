@@ -58,6 +58,7 @@ def draw_text(text, font, text_col, x, y):
 def reset_level(level):
     player.reset(100, screen_height - 130)
     blob_group.empty()
+    platform_group.empty()
     lava_group.empty()
     exit_group.empty()
 
@@ -112,6 +113,7 @@ class Player():
         dx = 0
         dy = 0
         walk_cooldown = 5
+        col_thresh = 20
         
         if game_over == 0:
             #get keypresses
@@ -187,6 +189,26 @@ class Player():
             if pygame.sprite.spritecollide(self, exit_group, False):
                 game_over = 1
 
+            #check for collision with platforms
+            for platform in platform_group:
+                #collision in the x direction:
+                if platform.rect.colliderect(self.rect.x + dx, self.rect.y, self.width, self.height):
+                    dx = 0
+                #collision in the y direction
+                if platform.rect.colliderect(self.rect.x, self.rect.y + dy, self.width, self.height):
+                    #check if below platform
+                    if abs((self.rect.top + dy) - platform.rect.bottom) < col_thresh:
+                      self.vel_y = 0
+                      dy = platform.rect.bottom - self.rect.top
+                    #check if above platform
+                    elif abs((self.rect.bottom + dy) - platform.rect.top) < col_thresh:
+                        self.rect.bottom = platform.rect.top - 1
+                        self.in_air = False
+                        dy = 0
+                    #move sideways with the platform
+                    if platform.move_x != 0:
+                        self.rect.x += platform.move_direction
+            
             #update player coordinates
             self.rect.x += dx
             self.rect.y += dy
