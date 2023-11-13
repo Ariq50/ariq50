@@ -1,4 +1,46 @@
-var stateCensusData = [
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Homework 5, Part 3</title>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="Page for Homework 5, Part 3">
+    <style>
+        body {
+            background-color: coral;
+            text-align: center;
+        }
+
+        h1 {
+            color: purple;
+        }
+
+        h2 {
+            color: chartreuse;
+        }
+
+        h3 {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Homework 5</h1>
+    <h2>Part 3</h2>
+    <form id="frm1" action="form_action.asp">
+        State Name Or Abbreviation: <input type="text" name="name" id="name"><br>
+        <input type="button" onclick="findInArray()" value="Submit">
+        <div>
+            <p id="error"></p>
+            <p>State Abr: </p><p id="stateAbr"></p>
+            <p>State Name: </p><p id="stateName"></p>
+            <p>Capitol: </p><p id="stateCapitol"></p>
+            <p>Population: </p><p id="statePopulation"></p>
+        </div>
+        <input type='reset' value='Reset' name='reset'>
+    </form>
+    <script>
+        var stateCensusData = [
                 ["AL", "Alabama", "Montgomery", "4,903,185"],
                 ["AK", "Alaska", "Juneau", "731,545"],
                 ["AZ", "Arizona", "Phoenix", "7,278,717"],
@@ -128,13 +170,22 @@ var stateCensusData = [
                 var error = "Please enter a US state name."  
             } else if (!/^[a-zA-Z]*$/g.test(inp)) {
                 var error = "Invalid character(s)."
-            } else if (inp != "AL" || inp != "ALABAMA" || inp != "AK" || inp != "ALASKA" || inp != "AZ" || inp != "ARIZONA" || inp != "AR" || inp != "ARKANSAS" || 
-            inp != "CA" || inp != "CALIFORNIA" || inp != "CO" || inp != "COLORADO") 
+            } else {
+                for(var i = 0; i < 6; i++)
             {
+                if(inp != stateCensusData[i][0])
+                {
                 var error = "Sorry, we do not have information about this state! We only have information about the following US states: Alabama, Alaska, Arizona,Arkansas, California, and Colorado."
+                }
             }
 
             var Error = document.getElementById('error');
 
             Error.innerHTML = error ;
         }
+    </script>
+    <h3>
+        <a href="hw5.html"> Return to Homework 5</a>
+    </h3>
+</body>
+</html>
