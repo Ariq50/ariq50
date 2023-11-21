@@ -176,7 +176,7 @@ class Fighter():
 
         def reset(self):
                 self.alive = True
-                self.potion = self.start_potions
+                self.potions = self.start_potions
                 self.hp = self.max_hp
                 self.frame_index = 0
                 self.action = 0
