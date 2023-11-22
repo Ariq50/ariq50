@@ -1,7 +1,10 @@
 import pygame
+from pygame import mixer
 from pygame.locals import *
 import random
 
+pygame.mixer.pre_init(44100, -16, 2, 512)
+mixer.init()
 
 #define fps
 clock = pygame.time.Clock()
@@ -12,6 +15,16 @@ screen_height = 700
 
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Celestial Invaders')
+
+#load sounds
+explosion_fx = pygame.mixer.Sound("C:/Users/kian_/Downloads/PyGame/Celestial Invaders/explosion.wav")
+explosion_fx.set_volume(0.25)
+
+explosion2_fx = pygame.mixer.Sound("C:/Users/kian_/Downloads/PyGame/Celestial Invaders/explosion2.wav")
+explosion2_fx.set_volume(0.25)
+
+laser_fx = pygame.mixer.Sound("C:/Users/kian_/Downloads/PyGame/Celestial Invaders/laser.wav")
+explosion_fx.set_volume(0.25)
 
 #define game variables
 rows = 5
@@ -57,6 +70,7 @@ class Spaceship(pygame.sprite.Sprite):
         time_now = pygame.time.get_ticks()
         #shoot
         if key[pygame.K_SPACE] and time_now - self.last_shot > cooldown:
+            laser_fx.play()
             bullet = Bullets(self.rect.centerx, self.rect.top)
             bullet_group.add(bullet)
             self.last_shot = time_now
@@ -87,6 +101,7 @@ class Bullets(pygame.sprite.Sprite):
             self.kill()
         if pygame.sprite.spritecollide(self, alien_group, True):
             self.kill()
+            explosion_fx.play()
             explosion = Explosion(self.rect.centerx, self.rect.centery, 2)
             explosion_group.add(explosion)
 
@@ -111,7 +126,7 @@ class Aliens(pygame.sprite.Sprite):
             self.move_direction *= -1
             self.move_counter *= self.move_direction
 
-#create Bullets class
+#create Alien_Bullets class
 class Alien_Bullets(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
@@ -125,6 +140,7 @@ class Alien_Bullets(pygame.sprite.Sprite):
             self.kill()
         if pygame.sprite.spritecollide(self, spaceship_group, False, pygame.sprite.collide_mask):
             self.kill()
+            explosion2_fx.play()
             #reduce spaceship health
             spaceship.health_remaining -= 1
             explosion = Explosion(self.rect.centerx, self.rect.centery, 1)
