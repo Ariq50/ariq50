@@ -1,5 +1,6 @@
-
+//Class for storing values associated with game map resources and attributes
 public class Value {
+	//Class variables
 	public static int groundGrass = 0;
 	public static int groundDirt = 1;
 	
