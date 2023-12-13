@@ -1,6 +1,7 @@
 import java.awt.*;
 
 public class Enemy extends Rectangle {
+	//Class variables
 	public int xC, yC;
 	public int health;
 	public int healthSpace = 3, healthHeight = 6;
@@ -15,10 +16,10 @@ public class Enemy extends Rectangle {
 	public boolean hasLeft = false;
 	public boolean hasRight = false;
 	
-	public Enemy() {
+	public Enemy() { //Constructor
 		
 	}
-	public void spawnEnemy(int enemyID) {
+	public void spawnEnemy(int enemyID) { //Method that generates enemy units in response to game map layout
 		for(int y = 0; y < Screen.room.block.length; y++) {
 			if(Screen.room.block[y][0].groundID == Value.groundDirt) {
 				setBounds(Screen.room.block[y][0].x, Screen.room.block[y][0].y, enemySize, enemySize);
@@ -33,7 +34,7 @@ public class Enemy extends Rectangle {
 		
 		inGame = true;
 	}	
-	public void deleteEnemy() {
+	public void deleteEnemy() { //Removes 'dead' enemy units
 		inGame = false;
 		direction = right;
 		enemyWalk = 0;
@@ -41,11 +42,11 @@ public class Enemy extends Rectangle {
 		Screen.room.block[0][0].getMoney(enemyID); //Gives player money amount associated with enemy unit.
 	}
 	
-	public void loseHealth() {
+	public void loseHealth() { //Decrements player health if an enemy unit reaches their base
 		Screen.health -= 1;
 	}
 	
-	public int walkFrame = 0, walkSpeed = 40;
+	public int walkFrame = 0, walkSpeed = 40; //Enemy unit movement attributes
 	
 	public void physic() { //Enemy waves path finding.
 		if(walkFrame >= walkSpeed) {
@@ -126,19 +127,19 @@ public class Enemy extends Rectangle {
 		}
 	} //End of path finding.
 
-	public void loseHealth(int amo) {
+	public void loseHealth(int amo) { //Decrements enemy units when they are attacked
 		health -= amo;
 		
 		checkDeath();
 	}
 	
-	public void checkDeath() {
+	public void checkDeath() { //Checks if enemy unit is still alive
 		if(health <= 0) {
 			deleteEnemy();
 		}
 	}
 	
-	public boolean isDead() {
+	public boolean isDead() { //Checks if enemy unit still within bounds of game world
 		if(inGame) {
 			return false;
 		} else {
@@ -146,7 +147,7 @@ public class Enemy extends Rectangle {
 		}
 	}
 	
-	public void draw(Graphics g) {
+	public void draw(Graphics g) { //Renders enemy units to game map
 		if(inGame) {
 			g.drawImage(Screen.tileset_enemy[enemyID], x, y, width, height, null);
 			//Enemy Health Bar.
