@@ -2,8 +2,9 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.image.*;
 import java.io.*;
-
+//Class for resource handling and game integration
 public class Screen extends JPanel implements Runnable {
+	//Class variables
 	public Thread thread = new Thread(this);
 	
 	public static Image[] tileset_ground = new Image[100];
@@ -28,14 +29,14 @@ public class Screen extends JPanel implements Runnable {
 	
 	public static Enemy[] enemies = new Enemy[1];
 	
-	public Screen(Frame frame) {
+	public Screen(Frame frame) { //Class constructor
 		frame.addMouseListener(new KeyHandle());
 		frame.addMouseMotionListener(new KeyHandle());
 		
 		thread.start();
 	}
 	
-	public static void hasWon() {
+	public static void hasWon() { //Method that checks if the player has won the level or game
 		if(killed == killsToWin) {
 			
 			isWin = true;
@@ -44,7 +45,7 @@ public class Screen extends JPanel implements Runnable {
 		}
 	}
 	
-	public void define() {
+	public void define() { //Method that defines game map layout
 		room = new Room();
 		save = new Save();
 		store = new Store();
@@ -78,7 +79,7 @@ public class Screen extends JPanel implements Runnable {
 		}
 	}
 	
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g) { //Method that draws the borders of the game window
 		if(isFirst) {
 			myWidth = getWidth();
 			myHeight = getHeight();
@@ -131,9 +132,9 @@ public class Screen extends JPanel implements Runnable {
 		}
 	}
 	
-	public int spawnTime = 2400, spawnFrame = 0;
+	public int spawnTime = 2400, spawnFrame = 0; //Frame rate attributes
 	
-	public void enemySpawner() {
+	public void enemySpawner() { //Method for spawning enemy units on game map
 		if(spawnFrame >= spawnTime) {
 			for(int i = 0; i < enemies.length; i++) {
 				if(!enemies[i].inGame) {
@@ -147,7 +148,7 @@ public class Screen extends JPanel implements Runnable {
 		}
 	}
 	
-	public void run() {
+	public void run() { //Checks if game window close conditions have been met (central game loop).
 		while(true) {
 			if(!isFirst && health > 0 && !isWin){
 				room.physic();
