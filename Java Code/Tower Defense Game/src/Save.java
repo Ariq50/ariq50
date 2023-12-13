@@ -1,8 +1,8 @@
 import java.io.*;
 import java.util.*;
-
+//Class for loading level files that the program uses to determine layout of the game map
 public class Save {
-	public void loadSave(File loadPath) {
+	public void loadSave(File loadPath) { //Method for loading level files
 		try {
 		Scanner loadScanner = new Scanner(loadPath);
 		
