@@ -2,10 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Frame extends JFrame {
+	//Class variables
 	public static String title = "Garden Defender";
 	public static Dimension size = new Dimension(700, 550);
 	
-	public Frame() {
+	public Frame() { //Class constructor
 		setTitle(title);
 		setSize(size);
 		setResizable(false);
@@ -15,7 +16,7 @@ public class Frame extends JFrame {
 		init();
 	}
 	
-	public void init() {
+	public void init() { //Set dimensions of frame and adds screen to frame
 		setLayout(new GridLayout(1, 1, 0, 0));
 		
 		Screen screen = new Screen(this);
@@ -24,7 +25,7 @@ public class Frame extends JFrame {
 		setVisible(true);
 	}
 	
-	public static void main(String args []) {
+	public static void main(String args []) { //Main entry point for program
 		Frame frame  = new Frame();
 	}
 	
