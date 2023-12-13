@@ -1,6 +1,7 @@
 import java.awt.*;
-
+//Class for drawing and handling laser tower store mechanics
 public class Store {
+	//Class variables
 	public static int shopWidth = 8;
 	public static int buttonSize = 52;
 	public static int cellSpace = 2;
@@ -18,14 +19,14 @@ public class Store {
 	public Rectangle[] button = new Rectangle[shopWidth];
 	public Rectangle buttonHealth;
 	public Rectangle buttonCoins;
-	
+	//Is the player holding a tower with the mouse cursor
 	public boolean holdsItem = false;
 	
-	public Store() {
+	public Store() { //Class constructor
 		define();
 	}
 	
-	public void click(int mouseButton) {
+	public void click(int mouseButton) { //Has the player clicked the mouse first key and selected a tower
 		if(mouseButton == 1) {
 			for(int i = 0; i < button.length; i++) {
 				if(button[i].contains(Screen.mse)) {
@@ -40,7 +41,7 @@ public class Store {
 					}
 				}
 			}
-			if(holdsItem) {
+			if(holdsItem) { //Adjust player money for tower purchase and deploy tower
 				if(Screen.coinage >= buttonPrice[realID]) {
 					for(int y = 0; y < Screen.room.block.length; y++) {
 						for(int x = 0; x < Screen.room.block[0].length; x++) {
@@ -57,7 +58,7 @@ public class Store {
 			}
 		}
 	}	
-	public void define() {
+	public void define() { //Define store attributes
 		for(int i = 0; i < button.length; i++) {
 			button[i] = new Rectangle((Screen.myWidth/2) - ((shopWidth * (buttonSize + cellSpace))/2) 
 					+ ((buttonSize + cellSpace) * i), (Screen.room.block[Screen.room.worldHeight - 1][0].y) 
@@ -69,7 +70,7 @@ public class Store {
 				iconSize, iconSize);
 	}
 	
-	public void draw(Graphics g) {
+	public void draw(Graphics g) { //Draw the tower store
 		for(int i = 0; i < button.length; i++) {
 				if(button[i].contains(Screen.mse)) {
 					g.setColor(new Color(255, 255, 255, 100));
