@@ -1,6 +1,7 @@
 import java.awt.*;
 
 public class Block extends Rectangle {
+	//Class variables
 	public Rectangle towerSquare;
 	public int towerSquareSize = 130;
 	public int groundID;
@@ -70,7 +71,7 @@ public class Block extends Rectangle {
 			Screen.coinage += Value.deathReward[enemyID];  //Player gets money for killing enemy attackers.
 			}
 	
-	public void fight(Graphics g) {
+	public void fight(Graphics g) { //Draws laser from tower to enemy unit when unit is detected and attacked by tower
 		if(Screen.isDebug) {
 		if(airID == Value.airTowerLaser) {
 			g.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
