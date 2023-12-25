@@ -12,7 +12,7 @@ public class Solution {
             }
         }
 
-        percentage = (int)Math.Round((double)(100 * counter) / s.Length);
+        percentage = (int)Math.Floor((double)(100 * counter) / s.Length);
 
         return percentage;
     }
