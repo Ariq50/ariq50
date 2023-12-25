@@ -1,46 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Homework 5, Part 3</title>
-    <meta charset="utf-8">
-    <meta name="description"
-          content="Page for Homework 5, Part 3">
-    <style>
-        body {
-            background-color: coral;
-            text-align: center;
-        }
-
-        h1 {
-            color: purple;
-        }
-
-        h2 {
-            color: chartreuse;
-        }
-
-        h3 {
-            color: blue;
-        }
-    </style>
-</head>
-<body>
-    <h1>Homework 5</h1>
-    <h2>Part 3</h2>
-    <form id="frm1" action="form_action.asp">
-        State Name Or Abbreviation: <input type="text" name="name" id="name"><br>
-        <input type="button" onclick="findInArray()" value="Submit">
-        <div>
-            <p id="error"></p>
-            <p>State Abr: </p><p id="stateAbr"></p>
-            <p>State Name: </p><p id="stateName"></p>
-            <p>Capitol: </p><p id="stateCapitol"></p>
-            <p>Population: </p><p id="statePopulation"></p>
-        </div>
-        <input type='reset' value='Reset' name='reset'>
-    </form>
-    <script>
-        var stateCensusData = [
+var stateCensusData = [
                 ["AL", "Alabama", "Montgomery", "4,903,185"],
                 ["AK", "Alaska", "Juneau", "731,545"],
                 ["AZ", "Arizona", "Phoenix", "7,278,717"],
@@ -183,9 +141,3 @@
 
             Error.innerHTML = error ;
         }
-    </script>
-    <h3>
-        <a href="hw5.html"> Return to Homework 5</a>
-    </h3>
-</body>
-</html>
