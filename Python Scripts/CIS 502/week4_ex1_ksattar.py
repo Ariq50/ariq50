@@ -11,6 +11,7 @@ class AttributeCounterMeta(type):
   def __init__(cls, name, bases, dct):
     super().__init__(name, bases, dct)
     cls.attribute_count = len(dct)
+    
 #Sub-class of meta class
 class AttributeCounter(metaclass=AttributeCounterMeta):
   def __init__(self, name, count, length, width):
