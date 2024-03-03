@@ -7,6 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1SOa0pp-PEP91DV4D_teJ4deJFHWAqSfh
 """
 
+#Function that take a integer as the upward limit and returns a Fibonacci sequence up to that limit
 def fibonacci_generator(limit):
   n1, n2 = 0, 1
 
@@ -14,11 +15,15 @@ def fibonacci_generator(limit):
     yield n1
     n1, n2 = n2, n1 + n2
 
+#Set the limit
 limit = 50
 
+#Pass function call to variable representing sequence to be generated
 fib_sequence = fibonacci_generator(limit)
 
+#Print limit of sequence
 print("Fibonnaci numbers up to", limit, ":")
 
+#Print sequence to screen
 for num in fib_sequence:
   print(num, end=" ")
