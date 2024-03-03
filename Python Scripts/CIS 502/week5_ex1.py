@@ -9,7 +9,8 @@ Original file is located at
 
 # Define Student class
 class Student():
-    # init function that uses **kwargs to accept unlimited keyworded arguments
+
+#init function that uses **kwargs to accept unlimited keyworded arguments
     def __init__(self, **kwargs):
         # attributes
         # Uses .get() method to check if the key exists before accessing it.
@@ -17,8 +18,6 @@ class Student():
         self.name = kwargs.get('n', 'Unknown')
         self.age = kwargs.get('a', 'Unknown')
         self.grade = kwargs.get('g', 'Unknown')
-
-
 
 # Create objects of Student class
 student1 = Student(n='Alice', a='18', g='A')
